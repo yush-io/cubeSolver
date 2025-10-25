@@ -1,59 +1,52 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/EvxoT0RF)
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=21191112)
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\>"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # Rubix Cube Solver
- > Your author list below should include links to all members GitHub (remove existing author).
- 
- > Authors: [Evan Lin] https://github.com/Evananlin
+  > Authors: [Evan Lin] https://github.com/Evananlin
             [Aayush Rashinkar]
             [Celso Lopez]
             [Abdullah Kashif]
 
- > You will be forming a group of **FOUR** students and working on an interesting project. The project has 4 phases, each one with specific requirements. A list of proposed project ideas that have been successful in previous quarters is listed in the project specifications document on Canvas. You can select an idea from the list and start thinking about the features you will implement. If you want to propose your own original idea, you will have to contact your instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). The project work should be divided almost equally among team members. You can of course help each other, but it needs to be clear who will be responsible for which features. Additionally, you are expected to follow Scrum patterns, specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings.
-
  > ## Expectations
- > * The backend of your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
- > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
- > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
- > * **Each member of the group must actively participate in the Github Project board, writing unit tests, and reviewing commited code.**
-> * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold two to three scrum/check-in meetings with your lab TA/reader at different times in addition to the final demo.
+  * The backend of your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
+  * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
+  * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
+  * **Each member of the group must actively participate in the Github Project board, writing unit tests, and reviewing commited code.**
+ * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold two to three scrum/check-in meetings with your lab TA/reader at different times in addition to the final demo.
 
 ## Project Description
 ### Personal Importance:
-> * Using the integration of an AI based image recognition technology (yolov8) with algorithmic problem solving (kociemba) to solve a globally respected puzzle sounds interesting. It uses multiple aspects of CS including computer vision, backend (python), and  frontend 3D graphics. It connects the gap between the physical world and digital problem solving. Aayush likes 3x3 cubes. 
+ * Using the integration of an AI based image recognition technology (yolov8) with algorithmic problem solving (kociemba) to solve a globally respected puzzle sounds interesting. It uses multiple aspects of CS including computer vision, backend (python), and  frontend 3D graphics. It connects the gap between the physical world and digital problem solving. Aayush likes 3x3 cubes. 
 ### Languages:
-> * Python (backend logic, image processing, API)
-> * HTML, CSS, JavaScript (frontend UI)
+ * Python (backend logic, image processing, API)
+ * HTML, CSS, JavaScript (frontend UI)
 ### Frameworks / Libraries / Tools:
-> * YOLOv8 (Ultralytics) – for object detection of cube stickers
-> * OpenCV – for image processing and color extraction
-> * scikit-image – for LAB color space comparison
-> * Kociemba Algorithm (Python Library) – for optimal cube solving
-> * FastAPI – to build and serve backend endpoints (/scan, /solve)\
-> * cubing.js – for interactive 3D cube visualization and step playback
-> * JSON – for communication between frontend and backend
+ * YOLOv8 (Ultralytics) – for object detection of cube stickers
+ * OpenCV – for image processing and color extraction 
+ * scikit-image – for LAB color space comparison
+ * Kociemba Algorithm (Python Library) – for optimal cube solving
+ * FastAPI – to build and serve backend endpoints (/scan, /solve)\
+ * cubing.js – for interactive 3D cube visualization and step playback
+ * JSON – for communication between frontend and backend
 ### Input:
-> * 6 images of each face of the scrambled 3x3 cube.
+ * 6 images of each face of the scrambled 3x3 cube.
 ### Output:
-> * Output of optimal solution in standard 3x3 notation (ex: R U R’ U R U2 R’ U)
-> * 3D cube on a webpage visualizing the solution with (next, previous, maybe play/plause)
+ * Output of optimal solution in standard 3x3 notation (ex: R U R’ U R U2 R’ U)
+ * 3D cube on a webpage visualizing the solution with (next, previous, maybe play/plause)
 ### Features and Complexity:
-> * Cube Detection (YOLOv8 + OpenCV)
-> * Automatically identifies and labels the 9 stickers on each cube face.
-> * Detects colors under different lighting conditions using LAB color distance.
-> * State Construction and Validation
-> * Builds a valid cube state (URFDLB facelet string) using nearest-color matching.
-> * Validates the input to ensure it represents a possible cube configuration.
-> * Algorithmic Solver (Kociemba)
-> * Computes an optimal (or near-optimal) sequence of moves to solve the cube.
-> * Returns both the full move string and total move count.
-> * Interactive 3D Visualization (cubing.js)
-> * Displays a 3D model of the cube.
-> * Lets users follow each move manually using Next/Prev buttons or auto-play the solution.
+ * Cube Detection (YOLOv8 + OpenCV)
+ * Automatically identifies and labels the 9 stickers on each cube face.
+ * Detects colors under different lighting conditions using LAB color distance.
+ * State Construction and Validation
+ * Builds a valid cube state (URFDLB facelet string) using nearest-color matching.
+ * Validates the input to ensure it represents a possible cube configuration.
+ * Algorithmic Solver (Kociemba)
+ * Computes an optimal (or near-optimal) sequence of moves to solve the cube.
+ * Returns both the full move string and total move count.
+ * Interactive 3D Visualization (cubing.js)
+ * Displays a 3D model of the cube.
+ * Lets users follow each move manually using Next/Prev buttons or auto-play the solution.
 ### Data Flow
-> * Images → YOLOv8 Detection → Color Mapping → Facelet String → Kociemba Solver → Move Sequence → cubing.js Viewer
+ * Images → YOLOv8 Detection → Color Mapping → Facelet String → Kociemba Solver → Move Sequence → cubing.js Viewer
 
 >
 >
