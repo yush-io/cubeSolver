@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c405cd90383e5bb4cadc6cea77441bfe
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 333226
+  packageName: Rubik Cube
+  packageVersion: 1.0.2
+  assetPath: Assets/RubikCube/Prefabs/BackgroundCanvas.prefab
+  uploadId: 809382
