@@ -48,6 +48,9 @@
    conda create -n yolov8 python=3.11
    conda activate yolovenv
    pip install -r requirements.txt
+   pip install ultralytics opencv-python
+   pip uninstall opencv-python opeencv-contrib-python
+   pip insstall opencv-python-headless
 >
 >
  > ## Phase II
