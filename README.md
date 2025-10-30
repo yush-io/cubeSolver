@@ -41,6 +41,13 @@
 ### Data Flow
  * Images → YOLOv8 Detection → Color Mapping → Facelet String → Kociemba Solver → Move Sequence → cubing.js Viewer
 
+### Backend Setup
+1. Install Miniconda
+2. Create the environment:
+   ```bash
+   conda create -n yolov8 python=3.10
+   conda activate yolov8
+   pip install -r requirements.txt
 >
 >
  > ## Phase II
