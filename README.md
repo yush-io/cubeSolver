@@ -49,8 +49,7 @@
    conda activate yolov8
    pip install -r requirements.txt
    pip install ultralytics opencv-python
-   pip uninstall opencv-python opeencv-contrib-python
-   pip insstall opencv-python-headless
+   pip install opencv-python-headless
 >
 >
  > ## Phase II
