@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO; // for reading json
+using System.IO;
+using UnityEngine.TextCore; // for reading json
 
 
 public class cubeRotator : MonoBehaviour // from unity's mb class
@@ -47,9 +48,44 @@ public class cubeRotator : MonoBehaviour // from unity's mb class
         }
     }
 
+    Transform getPivot(string move)
+    {
+        char pivot = move[0];
+
+        if (pivot == 'U')
+        {
+            return upPivot;
+        }
+        else if (pivot == 'D')
+        {
+            return downPivot;
+        }
+        else if (pivot == 'L')
+        {
+            return leftPivot;
+        }
+        else if (pivot == 'R')
+        {
+            return rightPivot;
+        }
+        else if (pivot == 'F')
+        {
+            return frontPivot;
+        }
+        else if (pivot == 'B')
+        {
+            return backPivot;
+        }
+        else
+        {
+            Debug.LogError("ERROR: invalid pivot/move in getPivot\n");
+            return null;
+        }
+    }
+
     void Start()
     {
-        // save cubelets under parent (cube) and put into list
+        // save only cubelets under parent (cube) and put into list
         for (int i = 0; i < transform.childCount; ++i)
         {
             Transform obj = transform.GetChild(i);
@@ -61,7 +97,7 @@ public class cubeRotator : MonoBehaviour // from unity's mb class
 
         readMoves();
         StartCoroutine(executeMoves());
-        
+
         return;
     }
 }
