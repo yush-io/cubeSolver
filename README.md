@@ -46,7 +46,7 @@
 2. Create the environment:
    ```bash
    conda create -n yolov8 python=3.11
-   conda activate yolovenv
+   conda activate yolov8
    pip install -r requirements.txt
    pip install ultralytics opencv-python
    pip uninstall opencv-python opeencv-contrib-python
