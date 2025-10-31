@@ -11,7 +11,7 @@
  * Using the integration of an AI based image recognition technology (yolov8) with algorithmic problem solving (kociemba) to solve a globally respected puzzle sounds interesting. It uses multiple aspects of CS including computer vision, backend (python), and  frontend 3D graphics. It connects the gap between the physical world and digital problem solving. Aayush likes 3x3 cubes. 
 ### Languages:
  * Python (backend logic, image processing, API)
- * HTML, CSS, JavaScript (frontend UI)
+ * Unity, C# (frontend UI)
 ### Frameworks / Libraries / Tools:
  * YOLOv8 (Ultralytics) – for object detection of cube stickers
  * OpenCV – for image processing and color extraction 
