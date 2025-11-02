@@ -69,9 +69,58 @@
 
 ### Navigation Diagram
 > Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). Nodes represent the different screens in your program and arrows represent the way to navigate from one screen to another. It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
+ <img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/195c3363-858b-4221-b08f-72cb573a4651" />
+
 
 ### Screen Layouts
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs and expected output, or any graphical user interface components if applicable (e.g. buttons, text boxes, etc). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+
+#### Start Screen
+* Components
+  * Title: "AI Cube Solver"
+  * Button: “Start” →navigates to the Scan Screen
+  * Background: Simple gradient or cube animation
+* Purpose:
+  * Introduce the project and start the workflow
+#### Scan Screen
+* Components
+  * Webcam Viewport: Displays the live camera feed
+  * Button: “Capture Face” –captures one face and saves it
+  * Indicator: Shows which cube face is being scanned.
+  * Button: “Next” → move to the next cube face.
+  * Button: “Submit” → goes to Review Screen after all 6 faces are captured.
+* Purpose:
+  * Gather 6 inputs images for the cube
+#### Review Screen
+* Components:
+  * Thumbnails: 6 captured images labeled by face (U, R, F, D, L, B)
+  * Button: “Retake” goes back to Scan Screen
+  * Button: “Confirm” → proceeds to solving screen
+* Purpose:
+  * Let users confirm their captures before processing
+#### Solving Screen
+* Components:
+  * Loading Animation / Text: “Computing optimal solution…” animated character running
+  * Progress Bar: Visual feedback during backend API call.
+* Purpose: 
+  * Wait screen while Yolov8 + kociemba backend generates a solution string.
+#### 3D Visualization Screen
+* Components:
+  * 3D Cube Model: Interactive cube rendered in unity
+  * Buttons: “Next Move”, “Previous Move” → step through or backwards in the steps
+  * Move Display: Shows the current move 
+  * Move Counter: “Step # / #” → displays current / total steps
+  * Buttons: “Finished” → shows up after current step == total steps
+* Purpose:
+  * Fun visualizar for the solution sequence in real time
+#### Finish Screen
+* Components:
+  * Message: “Cube Solved!”
+  * Button: “Restart” → returns to Start Screen.
+  * Button: “Exit” → closes the application
+* Purpose:
+  * End of workflow or restart option
+
 
 ## Class Diagram
  > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
