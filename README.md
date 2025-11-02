@@ -18,7 +18,7 @@
  * scikit-image – for LAB color space comparison
  * Kociemba Algorithm (Python Library) – for optimal cube solving
  * FastAPI – to build and serve backend endpoints (/scan, /solve)\
- * cubing.js – for interactive 3D cube visualization and step playback
+ * Unity – for interactive 3D cube visualization and step playback
  * JSON – for communication between frontend and backend
 ### Input:
  * 6 images of each face of the scrambled 3x3 cube.
@@ -35,7 +35,7 @@
  * Algorithmic Solver (Kociemba)
  * Computes an optimal (or near-optimal) sequence of moves to solve the cube.
  * Returns both the full move string and total move count.
- * Interactive 3D Visualization (cubing.js)
+ * Interactive 3D Visualization (Unity)
  * Displays a 3D model of the cube.
  * Lets users follow each move manually using Next/Prev buttons or auto-play the solution.
 ### Data Flow
