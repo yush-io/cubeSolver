@@ -54,6 +54,7 @@
 ## User Interface Specification
 ### Navigation Diagram
 <img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/3e825c1e-3a94-408d-8d23-3527af0250d9" />
+
 Description: The user interface will consist of a sequence of interactive screens in Unity that guide the user from scanning their physical cube to visualizing the solution.
 
 ### Screen Layouts
