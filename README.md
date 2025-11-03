@@ -17,7 +17,6 @@
  * OpenCV – for image processing and color extraction 
  * scikit-image – for LAB color space comparison
  * Kociemba Algorithm (Python Library) – for optimal cube solving
- * FastAPI – to build and serve backend endpoints (/scan, /solve)\
  * Unity – for interactive 3D cube visualization and step playback
  * JSON – for communication between frontend and backend
 ### Input:
@@ -39,7 +38,7 @@
  * Displays a 3D model of the cube.
  * Lets users follow each move manually using Next/Prev buttons or auto-play the solution.
 ### Data Flow
- * Images → YOLOv8 Detection → Color Mapping → Facelet String → Kociemba Solver → Move Sequence → cubing.js Viewer
+ * Images → YOLOv8 Detection → Color Mapping → Facelet String → Kociemba Solver → Move Sequence → Unity Viewer
 
 ### Backend Setup
 1. Install Miniconda
