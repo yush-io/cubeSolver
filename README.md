@@ -18,7 +18,8 @@
  * scikit-image – for LAB color space comparison
  * Kociemba Algorithm (Python Library) – for optimal cube solving
  * Unity – for interactive 3D cube visualization and step playback
- * JSON – for communication between frontend and backend
+ * FastAPI - communication structure between frontend and backend
+ * JSON – data format for frontend/backend communication
 ### Input:
  * 6 images of each face of the scrambled 3x3 cube.
 ### Output:
