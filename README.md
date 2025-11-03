@@ -80,14 +80,14 @@ Description: The user interface will consist of a sequence of interactive screen
 #### Start Screen
 * Components
   * Title: "AI Cube Solver"
-  * Button: “Start” →navigates to the Scan Screen
+  * Button: “Start” → navigates to the Scan Screen
   * Background: Simple gradient or cube animation
 * Purpose:
   * Introduce the project and start the workflow
 #### Scan Screen
 * Components
   * Webcam Viewport: Displays the live camera feed
-  * Button: “Capture Face” –captures one face and saves it
+  * Button: “Capture Face” → captures one face and saves it
   * Indicator: Shows which cube face is being scanned.
   * Button: “Next” → move to the next cube face.
   * Button: “Submit” → goes to Review Screen after all 6 faces are captured.
@@ -102,19 +102,19 @@ Description: The user interface will consist of a sequence of interactive screen
   * Let users confirm their captures before processing
 #### Solving Screen
 * Components:
-  * Loading Animation / Text: “Computing optimal solution…” animated character running
+  * Loading Animation/Text: “Computing optimal solution…”; animated character running
   * Progress Bar: Visual feedback during backend API call.
 * Purpose: 
   * Wait screen while Yolov8 + kociemba backend generates a solution string.
 #### 3D Visualization Screen
 * Components:
   * 3D Cube Model: Interactive cube rendered in unity
-  * Buttons: “Next Move”, “Previous Move” → step through or backwards in the steps
+  * Buttons: “Next Move”, “Previous Move” → tep forward or backward through the solution steps.
   * Move Display: Shows the current move 
   * Move Counter: “Step # / #” → displays current / total steps
   * Buttons: “Finished” → shows up after current step == total steps
 * Purpose:
-  * Fun visualizar for the solution sequence in real time
+  * Fun visualizer for the solution sequence in real time
 #### Finish Screen
 * Components:
   * Message: “Cube Solved!”
@@ -122,6 +122,7 @@ Description: The user interface will consist of a sequence of interactive screen
   * Button: “Exit” → closes the application
 * Purpose:
   * End of workflow or restart option
+
 
 
 ## Class Diagram
