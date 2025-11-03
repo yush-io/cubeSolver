@@ -2,9 +2,9 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=21191112)
 # Rubix Cube Solver
   > Authors: [Evan Lin] https://github.com/Evananlin
-            [Aayush Rashinkar]
-            [Celso Lopez]
-            [Abdullah Kashif]
+            [Aayush Rashinkar] https://github.com/AayushRashinkar
+            [Celso Lopez] https://github.com/CelsoSLopez
+            [Abdullah Kashif] https://github.com/abdullah0432
 
 ## Project Description
 ### Personal Importance:
