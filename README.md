@@ -50,7 +50,7 @@ Authors: [Evan Lin] https://github.com/Evananlin
    pip install -r requirements.txt
    pip install ultralytics opencv-python
    pip install opencv-python-headless
-
+## Phase II
 ## User Interface Specification
 ### Navigation Diagram
 <img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/3e825c1e-3a94-408d-8d23-3527af0250d9" />
