@@ -69,7 +69,7 @@
 
 ### Navigation Diagram
 > Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). Nodes represent the different screens in your program and arrows represent the way to navigate from one screen to another. It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
- <img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/195c3363-858b-4221-b08f-72cb573a4651" />
+<img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/3e825c1e-3a94-408d-8d23-3527af0250d9" />
 
 Description: The user interface will consist of a sequence of interactive screens in Unity that guide the user from scanning their physical cube to visualizing the solution.
 
