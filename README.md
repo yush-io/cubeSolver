@@ -54,7 +54,7 @@ Authors: [Evan Lin] https://github.com/Evananlin
 ### Navigation Diagram
 <img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/3e825c1e-3a94-408d-8d23-3527af0250d9" />
 
-Description: The user interface will consist of a sequence of interactive screens in Unity that guide the user from scanning their physical cube to visualizing the solution.
+Description: The user interface will consist of a sequence of interactive screens in Unity that guide the user through the entire process: from scanning their physical cube to visualizing the solution. Each screen would be connected through navigation buttons (except for the loading screen), allowing users to capture cube images, review and confirm scans, trigger the solving process, and visualize each step that leads to the final solution. This design ensures a an interative and step-by-step experience.
 
 ### Screen Layouts
 
@@ -84,7 +84,7 @@ Description: The user interface will consist of a sequence of interactive screen
 #### Solving Screen
 * Components:
   * Loading Animation/Text: “Computing optimal solution…”; animated character running
-  * Progress Bar: Visual feedback during backend API call.
+  * Progress Bar: Visual feedback during backend API call. If the bar is complete, automatically jump to the 3D visualization screen, else present a "Backend error" and automatically sends back to the scan screen.
 * Purpose: 
   * Wait screen while Yolov8 + kociemba backend generates a solution string.
 #### 3D Visualization Screen
@@ -94,8 +94,9 @@ Description: The user interface will consist of a sequence of interactive screen
   * Move Display: Shows the current move 
   * Move Counter: “Step # / #” → displays current / total steps
   * Buttons: “Finished” → shows up after current step == total steps
+  * Buttons: "Restart" → sends the user back to the start screen.
 * Purpose:
-  * Fun visualizer for the solution sequence in real time
+  * Fun visualizer for the solution sequence in real time, has interactive buttons to show next and previous steps.
 #### Finish Screen
 * Components:
   * Message: “Cube Solved!”
