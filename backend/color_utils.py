@@ -22,9 +22,9 @@ def nearest_color_lab(lab_color):
 # frame: original BGR image (from webcame)
 # box: YOLO bounding box object
 # Returns: str: color label
-def extract_color_from_bbox(frame, box):
+def extract_color_from_box(frame, box):
     # get bounding box coordinates
-    coords = yolo_box.xyxy[0]
+    coords = box.xyxy[0]
     x1 = int(coords[0])
     y1 = int(coords[1])
     x2 = int(coords[2])
