@@ -131,6 +131,9 @@ Description: The class diagram above represents the overall architecture of the 
  > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
  > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
  > * What tasks you are planning for this next sprint.
+### Updated Class Diagram with SOLID principles
+
+<img width="857" height="980" alt="image" src="https://github.com/user-attachments/assets/b97ba51d-8839-43ef-a20f-afd2f63ffc36" />
 
  
  > ## Final deliverable
