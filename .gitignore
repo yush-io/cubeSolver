@@ -1,3 +1,5 @@
+# adapted/inpsired by https://github.com/github/gitignore/blob/main/Unity.gitignore
+# and gitignore.io 
 # Unity generated folders
 [Ll]ibrary/
 [Tt]emp/
@@ -5,6 +7,7 @@
 [Bb]uild*/
 [Bb]uilds*/
 [Ll]ogs/
+/[Mm]emoryCaptures/
 UserSettings/
 MemoryCaptures/
 Recordings/
