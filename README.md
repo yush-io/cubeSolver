@@ -133,7 +133,8 @@ Description: The class diagram above represents the overall architecture of the 
  > * What tasks you are planning for this next sprint.
 ### Updated Class Diagram with SOLID principles
 
-<img width="857" height="980" alt="image" src="https://github.com/user-attachments/assets/b97ba51d-8839-43ef-a20f-afd2f63ffc36" />
+<img width="1563" height="1274" alt="image" src="https://github.com/user-attachments/assets/7ef3bdb8-de3e-42de-b192-da5caf3839e2" />
+
 
  
  > ## Final deliverable
