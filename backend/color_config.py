@@ -4,10 +4,10 @@ import numpy as np
 REFERENCE_COLORS = {
     'W': np.array([100, 0, 0]),
     'Y': np.array([70, -15, 85]),
-    'R': np.array([70, 80, 67]),
-    'O': np.array([70, 50, 78]),
+    'R': np.array([30, 80, 67]),
+    'O': np.array([50, 50, 78]),
     'G': np.array([70, -64, 49]),
-    'B': np.array([70, 79, -90])
+    'B': np.array([30, 79, -90])
 }
 
 # BGR values for OpenCV !!! not RGB
