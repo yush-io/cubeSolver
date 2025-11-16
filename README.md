@@ -1,4 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/EvxoT0RF)
+ [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/EvxoT0RF)
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=21191112)
 # Rubix Cube Solver
 Authors: [Evan Lin] https://github.com/Evananlin
@@ -111,29 +111,31 @@ Description: The user interface will consist of a sequence of interactive screen
 <img width="1181" height="684" alt="cs100finaldiagram-Page-2 drawio" src="https://github.com/user-attachments/assets/b3d04d24-4140-4ce2-ad84-345829ece855" />
 Description: The class diagram above represents the overall architecture of the Rubik’s Cube Solver project, illustrating how both the backend logic (Python) and frontend interface (Unity, C#) interact to process cube images, compute the solution, and visualize it in 3D. The design separates responsibilities into clear functional modules — image processing, cube solving, and user interaction — while maintaining communication through a unified API interface.
  
- > ## Phase III
- > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
- 
- > BEFORE the meeting you should do the following:
- > * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
- > * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
- >   * A new class diagram incorporating your changes after considering the SOLID principles.
- >   * For each update in your class diagram, you must explain in 3-4 sentences:
- >     * What SOLID principle(s) did you apply?
- >     * How did you apply it? i.e. describe the change.
- >     * How did this change help you write better code?
- > * Perform a new sprint plan like you did in Phase II.
- > * Make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
->  * Each team member should also submit the Peer Evaluation Form on Canvas for phase III. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for phase III, and a description of their contributions. Remember that each team member should submit the form individually.
- 
-> During the meeting with your reader you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
 ### Updated Class Diagram with SOLID principles
 
 <img width="1563" height="1274" alt="image" src="https://github.com/user-attachments/assets/7ef3bdb8-de3e-42de-b192-da5caf3839e2" />
+
+### Explaning Class Diagram Changes
+
+Breaking Down the Cube Scanner
+ * **SOLID Principle Applied:** Single Responsibility Principle
+ * **How we applied it:** The original CubeScanner was split into two dedicated classes: StickerDetector (responsible only for running the Yolov8/OpenCV model) and ColorMapper (responsible only for converting detected colors to the cube state string). We also remnoved the backend Capture_image() method, recognizing it as a frontend responsibility.
+ * **How this change helps write better code:** The code is now modular. If we want to upgrade the model from YOLOv8 to YOLOv9, we would only need to edit the StickerDetector class. Each class is not smaller, easier to test, and most importantly independent.
+
+Implementing interfaces for Solvers and Dectors
+ * **SOLID Principle Applied:** Inversion Principle
+ * **How we applied it:** We introduce the ISolver, IColorMapper, and IDetector interfaces, making sure that Kociembasolver and the new classes we implemented (StickerDetector and ColorMapper) implement them. The high-level FastAPI_API now depends on these abstract interfaces instead of the concrete classes.
+ * **How this change helps write better code:** This change makes the design flexible, testable, and pluggable. We can now substitue the real solver with a simple mock object during unit testing to ensuring the high-level logic is correct without needing to execute time-consuming code.
+
+Refining the MoveSequence Logic
+ * **SOLID Principle Applied:** Single Responsibility Principle
+ * **How we applied it:** The parse_solution() method was moved from the simple data container MoveSequence into the KociembaSolver class.
+ * **How this change helps write better code:** The KociembaSolver is now responsible for providing a complete, usable solution (including any necessary parsing or formatting), while the MoveSequence class remains a simple, clean, struct. This clarifies the role of each component and simplifies the data container.
+
+Adjustment to Client-Server Relationship
+ * **SOLID Principle Applied:** Single Responsibility Principle
+ * **How we applied it:** We removed the direct "uses" relationship between the CubeController (Frontend) and the FastAPI_API (backend). this implies that the communication logic will be handled by a dedicated, abstract class in the Unity environment, separate from low-level code.
+ * **How this change helps write better code:** The CubeController now maintains a single responsibility: managing the 3D cube model and applying rotations. This separation makes the frontend logic cleaner and allows the system to change its network protocol without modifying the cube's core behavior.
 
 
  
