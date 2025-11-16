@@ -1,25 +1,25 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/EvxoT0RF)
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=21191112)
 # Rubix Cube Solver
-  > Authors: [Evan Lin] https://github.com/Evananlin
-            [Aayush Rashinkar]
-            [Celso Lopez]
-            [Abdullah Kashif]
+Authors: [Evan Lin] https://github.com/Evananlin
+            [Aayush Rashinkar] https://github.com/AayushRashinkar
+            [Celso Lopez] https://github.com/CelsoSLopez
+            [Abdullah Kashif] https://github.com/abdullah0432
 
 ## Project Description
 ### Personal Importance:
  * Using the integration of an AI based image recognition technology (yolov8) with algorithmic problem solving (kociemba) to solve a globally respected puzzle sounds interesting. It uses multiple aspects of CS including computer vision, backend (python), and  frontend 3D graphics. It connects the gap between the physical world and digital problem solving. Aayush likes 3x3 cubes. 
 ### Languages:
  * Python (backend logic, image processing, API)
- * HTML, CSS, JavaScript (frontend UI)
+ * Unity, C# (frontend UI)
 ### Frameworks / Libraries / Tools:
  * YOLOv8 (Ultralytics) – for object detection of cube stickers
  * OpenCV – for image processing and color extraction 
  * scikit-image – for LAB color space comparison
  * Kociemba Algorithm (Python Library) – for optimal cube solving
- * FastAPI – to build and serve backend endpoints (/scan, /solve)\
- * cubing.js – for interactive 3D cube visualization and step playback
- * JSON – for communication between frontend and backend
+ * Unity – for interactive 3D cube visualization and step playback
+ * FastAPI - communication structure between frontend and backend
+ * JSON – data format for frontend/backend communication
 ### Input:
  * 6 images of each face of the scrambled 3x3 cube.
 ### Output:
@@ -35,11 +35,11 @@
  * Algorithmic Solver (Kociemba)
  * Computes an optimal (or near-optimal) sequence of moves to solve the cube.
  * Returns both the full move string and total move count.
- * Interactive 3D Visualization (cubing.js)
+ * Interactive 3D Visualization (Unity)
  * Displays a 3D model of the cube.
  * Lets users follow each move manually using Next/Prev buttons or auto-play the solution.
 ### Data Flow
- * Images → YOLOv8 Detection → Color Mapping → Facelet String → Kociemba Solver → Move Sequence → cubing.js Viewer
+ * Images → YOLOv8 Detection → Color Mapping → Facelet String → Kociemba Solver → Move Sequence → Unity Viewer
 
 ### Backend Setup
 1. Install Miniconda
@@ -50,31 +50,66 @@
    pip install -r requirements.txt
    pip install ultralytics opencv-python
    pip install opencv-python-headless
->
->
- > ## Phase II
- > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
- > * Create an "Epic" (note) for each feature. Place these epics in the `Product Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.``
- >   * Break down the "Epics" into smaller actionable user stories. Convert them into issues and assign them to team members. Place these in the `Sprint Backlog` column.
- >   * These cards should represent roughly 7 days worth of development time for your team. Then, once the sprint is over you should be repeating these steps to plan a new sprint, taking you until your second scrum meeting with the reader in phase III.
- > * Each team member needs to submit the Peer Evaluation Form on Canvas for this phase. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for phase  II, and a description of their contributions. Remember that each team member should submit the form individually.
- > * Schedule two check-ins using Calendly. Both time slots should be during your lab on week 6. Your entire team must be present for both check-ins.
- >   * The first check-in needs to be scheduled with your lab TA. During that meeting, you will discuss your project design/class diagram from phase II.
- >   * The second check-in should be scheduled with a reader. During that meeting you will discuss:
- >     * The tasks you are planning for the first sprint
- >     * How work will be divided between the team members
 ## User Interface Specification
- > Include a navigation diagram for your screens and the layout of each of those screens as desribed below. For all the layouts/diagrams, you can use any tool such as PowerPoint or a drawing program. (Specification requirement is adapted from the User Interface Design Document Template of CMSC 345 at the University of Maryland Global Campus)
-
 ### Navigation Diagram
-> Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). Nodes represent the different screens in your program and arrows represent the way to navigate from one screen to another. It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
+<img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/3e825c1e-3a94-408d-8d23-3527af0250d9" />
+
+Description: The user interface will consist of a sequence of interactive screens in Unity that guide the user through the entire process: from scanning their physical cube to visualizing the solution. Each screen would be connected through navigation buttons (except for the loading screen), allowing users to capture cube images, review and confirm scans, trigger the solving process, and visualize each step that leads to the final solution. This design ensures a an interative and step-by-step experience.
 
 ### Screen Layouts
-> Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs and expected output, or any graphical user interface components if applicable (e.g. buttons, text boxes, etc). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+
+#### Start Screen
+* Components
+  * Title: "AI Cube Solver"
+  * Button: “Start” → navigates to the Scan Screen
+  * Background: Simple gradient or cube animation
+* Purpose:
+  * Introduce the project and start the workflow
+#### Scan Screen
+* Components
+  * Webcam Viewport: Displays the live camera feed
+  * Button: “Capture Face” → captures one face and saves it
+  * Indicator: Shows which cube face is being scanned.
+  * Button: “Next” → move to the next cube face.
+  * Button: “Submit” → goes to Review Screen after all 6 faces are captured.
+* Purpose:
+  * Gather 6 inputs images for the cube
+#### Review Screen
+* Components:
+  * Thumbnails: 6 captured images labeled by face (U, R, F, D, L, B)
+  * Button: “Retake” goes back to Scan Screen
+  * Button: “Confirm” → proceeds to solving screen
+* Purpose:
+  * Let users confirm their captures before processing
+#### Solving Screen
+* Components:
+  * Loading Animation/Text: “Computing optimal solution…”; animated character running
+  * Progress Bar: Visual feedback during backend API call. If the bar is complete, automatically jump to the 3D visualization screen, else present a "Backend error" and automatically sends back to the scan screen.
+* Purpose: 
+  * Wait screen while Yolov8 + kociemba backend generates a solution string.
+#### 3D Visualization Screen
+* Components:
+  * 3D Cube Model: Interactive cube rendered in unity
+  * Buttons: “Next Move”, “Previous Move” → tep forward or backward through the solution steps.
+  * Move Display: Shows the current move 
+  * Move Counter: “Step # / #” → displays current / total steps
+  * Buttons: “Finished” → shows up after current step == total steps
+  * Buttons: "Restart" → sends the user back to the start screen.
+* Purpose:
+  * Fun visualizer for the solution sequence in real time, has interactive buttons to show next and previous steps.
+#### Finish Screen
+* Components:
+  * Message: “Cube Solved!”
+  * Button: “Restart” → returns to Start Screen.
+  * Button: “Exit” → closes the application
+* Purpose:
+  * End of workflow or restart option
+
+
 
 ## Class Diagram
- > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
+<img width="1181" height="684" alt="cs100finaldiagram-Page-2 drawio" src="https://github.com/user-attachments/assets/b3d04d24-4140-4ce2-ad84-345829ece855" />
+Description: The class diagram above represents the overall architecture of the Rubik’s Cube Solver project, illustrating how both the backend logic (Python) and frontend interface (Unity, C#) interact to process cube images, compute the solution, and visualize it in 3D. The design separates responsibilities into clear functional modules — image processing, cube solving, and user interaction — while maintaining communication through a unified API interface.
  
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
