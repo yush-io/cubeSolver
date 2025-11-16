@@ -31,7 +31,7 @@ public class cubeRotator : MonoBehaviour
     public Transform frontPivot;
     public Transform backPivot;
 
-    private string[] moves; // will be given from backend/json file
+    private string[] moves; // will be given from backend/json file 
     private List<Transform> allCubelets = new List<Transform>();
 
     void readMoves()
