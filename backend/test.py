@@ -6,8 +6,10 @@ import time
 from ColorMapper import extract_color_from_box
 from ColorMapper import BGR_COLORS
 
-model = YOLO(r"C:\Users\evana\Documents\cs100project\final-project-elin107-ahuss043-clope375-arash031\backend\yolv8Model\content\runs\detect\train3\weights\best.pt")
-cap = cv2.VideoCapture(0)
+# loads yolo model from file path
+model = YOLO("/Users/aayushr./Desktop/CS Projects/cubeSolver/final-project-elin107-ahuss043-clope375-arash031/backend/yolv8Model/content/runs/detect/train3/weights/best.pt")
+
+cap = cv2.VideoCapture(0) # connection to webcam
 
 if not cap.isOpened():
     print("webcam did not open correctly")
@@ -73,6 +75,7 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+# disconnect webcam, close openCV window, exit message
 cap.release()
 cv2.destroyAllWindows()
 print("exiting...")
