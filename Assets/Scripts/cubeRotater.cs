@@ -185,6 +185,30 @@ public class cubeRotator : MonoBehaviour
         }
     }
 
+    string[] getScramble(string[] solution){
+        string[] scramble = new string[solution.Length];
+        
+        for (int i = 0; i < solution.Length; ++i)
+        {
+            string move = solution[solution.Length -1 -i];
+            int size = move.Length;
+            char end = move[size -1];
+
+            if (end == '2'){
+                scramble[i] = move;
+
+            }
+            else if (end == '\''){
+                scramble[i] = move.Remove(size -1);
+            } else {
+                scramble[i] = move + '\'';
+
+            }
+        }
+                    return scramble;
+
+    }
+
     void Start()
     {
         // save only cubelets under parent (cube) and put into list
