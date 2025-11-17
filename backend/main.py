@@ -1,27 +1,35 @@
 import cv2
-# uncomment when StickerDetector class is made
-# from StickerDetector import StickerDetector 
+from StickerDetector import StickerDetector
 from ColorMapper import ColorMapper
 
-# detector = StickerDetector(r"C:\Users\evana\Documents\cs100project\final-project-elin107-ahuss043-clope375-arash031\backend\yolv8Model\content\runs\detect\train3\weights\best.pt")
-colorMap = ColorMapper()
-
-# replace with FastAPI image input later
-image_path = "images/IMG_0066.jpg"
-
-# load the image
-frame = cv2.imread(image_path)
-if frame is None:
-    print(f"Error: Could not read image")
-    exit(1)
-
-# cropped_stickers = detector.detect_and_crop(frame)
-
-#if len(cropped_stickers) != 9:
- #   print(f"Error: Expected 9 stickers")
- #   exit(1)
-
-# side_string = colorMap.extract_color(cropped_stickers)
-
-# print(f"Detected side string: {side_string}")
-
+def main():
+    modelPath = "yolv8Model/content/runs/detect/train3/weights/best.pt"
+    imagePath = "images/IMG_0066.jpg"
+    
+    detector = StickerDetector(modelPath)
+    colorMapper = ColorMapper()
+    
+    frame = cv2.imread(imagePath)
+    if frame is None:
+        print("Error: Could not read image")
+        return
+    
+    croppedStickers = detector.detectAndCrop(frame)
+    print(f"Detected {len(croppedStickers)} stickers")
+    
+    if len(croppedStickers) != 9:
+        print("Error: Expected 9 stickers for once face")
+        return
+    
+    try:
+        sideString = colorMapper.extract_color(croppedStickers)
+    except Exception as e:
+        print(f"Error while extracting colors: {e}")
+        return
+    
+    print(f"Detected side string: {sideString}")
+    
+    cv2.destroyAllWindows()
+    
+if __name__ == "__main__":
+    main()
