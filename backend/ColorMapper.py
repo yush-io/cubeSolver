@@ -1,6 +1,8 @@
 import numpy as np
 from skimage import color as skcolor
 from scipy.spatial.distance import euclidean # using SciPy for clarity
+from abc import ABC, abstractmethod
+
 
 # Colors in LAB space
 LAB_COLORS = {
@@ -22,61 +24,57 @@ BGR_COLORS = {
     'B': (255, 0, 0)
 }
 
-# find nearest reference color using Euclidean distance in LAB space
-# lab_color: numpy array [L, A, B]
-# returns str: color label
-def nearest_color_calculator(lab_color):
-    min_distance = float('inf')
-    nearest = None
+# Interface for a color mapper
+class IColorMapper(ABC):
+    @abstractmethod 
+    # return the nearest color label for a single LAB color
+    def nearest_color_calculator(self, lab_color: np.ndarray) -> str:
+        pass
+
+    @abstractmethod
+    # return a string of 9 color labels for one side of the cube
+    def extract_color(self, sticker_boxes: list) -> str:
+        pass
+
+
+
+class ColorMapper(IColorMapper):
+    # find nearest reference color using Euclidean distance in LAB space
+    # lab_color: numpy array [L, A, B]
+    # returns str: color label
+    def nearest_color_calculator(self, lab_color: np.ndarray) -> str:
+        min_distance = float('inf')
+        nearest = None
+        
+        # Starts a loop a iterate 
+        for color_name, ref_lab_color in LAB_COLORS.items():
+            # calculate the euclidean distance (uses SciPy library gives the distance between 2 points in 3d space because 
+            # LAB has 3 axies)
+            difference_distance = euclidean(lab_color, ref_lab_color)
+
+            if difference_distance < min_distance:
+                min_distance = difference_distance
+                nearest = color_name
+        
+        return nearest
+
+    # Extract the dominant color from a bounding box region
+    # frame: original BGR image (from webcame)
+    # box: YOLO bounding box object
+    # Returns: str: color label
+    def extract_color(self, cropped_stickers: list) -> str:
+        # makes sure we have a valid box that is not pixelless
+        if len(cropped_stickers) != 9:
+            raise ValueError("Must provide exactly 9 cropped sticker images")
+
+        side_colors = ""
+
+        for roi in cropped_stickers:
+            avg_bgr = np.mean(roi, axis=(0,1))
+            avg_rgb = avg_bgr[::-1] / 255.0 # BGR to RGB
+            avg_lab = skcolor.rgb2lab([[avg_rgb]])[0][0] # convert to LAB using skcolor library
+            color_label = self.nearest_color_calculator(avg_lab) # returns 1 string
+            side_colors += color_label # append to the string
+
+        return side_colors
     
-    # Starts a loop a iterate 
-    for color_name, ref_lab_color in LAB_COLORS.items():
-        # calculate the euclidean distance (uses SciPy library gives the distance between 2 points in 3d space because 
-        # LAB has 3 axies)
-        difference_distance = euclidean(lab_color, ref_lab_color)
-
-        if difference_distance < min_distance:
-            min_distance = difference_distance
-            nearest = color_name
-    
-    return nearest
-
-# Extract the dominant color from a bounding box region
-# frame: original BGR image (from webcame)
-# box: YOLO bounding box object
-# Returns: str: color label
-def extract_color_from_box(frame, box):
-    # get bounding box coordinates
-    coords = box.xyxy[0]
-    x1 = int(coords[0])
-    y1 = int(coords[1])
-    x2 = int(coords[2])
-    y2 = int(coords[3])
-
-    # shrink the box
-    # margins avoid edges that can resut from glare/shadows
-    margin = 5
-    x1 = max(0, x1 + margin)
-    y1 = max(0, y1 + margin)
-    x2 = min(frame.shape[1], x2 - margin)
-    y2 = min(frame.shape[0], y2 - margin)
-
-    # extract region with margin
-    regionOfInterest = frame[y1:y2, x1:x2]
-
-    # makes sure we have a valid box that is not pixelless
-    if regionOfInterest.size == 0:
-        return None
-    
-    #gets average color of all pixels within the region
-    avg_bgr = np.mean(regionOfInterest, axis=(0,1))
-
-    # Converst from BGR to RGB
-    # ::-1 revereses and normalize to 0-1
-    avg_rgb = avg_bgr[::-1] / 255.0
-
-    # convert RGB to LAB
-    avg_lab = skcolor.rgb2lab([[avg_rgb]])[0][0]
-
-    # return the closest reference color
-    return nearest_color_calculator(avg_lab)
