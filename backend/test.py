@@ -1,6 +1,10 @@
+# A simple webcam based sticker detection script using YOLOv8 just to test inital color
+# mapper functions and adjustments for LAB Colors
 from ultralytics import YOLO
 import cv2
 import time
+from ColorMapper import extract_color_from_box
+from ColorMapper import BGR_COLORS
 
 # loads yolo model from file path
 model = YOLO("/Users/aayushr./Desktop/CS Projects/cubeSolver/final-project-elin107-ahuss043-clope375-arash031/backend/yolv8Model/content/runs/detect/train3/weights/best.pt")
@@ -14,15 +18,42 @@ if not cap.isOpened():
 print("webcam worked correctly")
 
 prev_time = 0 #timestamp of prev frame to compute fps
+
+# loop for real-time detection
 while True:
-    ret, frame = cap.read() # ret -> if frame grab worked, frame -> actual image
+    ret, frame = cap.read() # reads 1 frame
     if not ret:
         print("frame grab did not work")
         break
 
-    # runs yolo inference on any image and keeps detections with >=50% confidence
+    # run YOLO inference on current frame
+    # conf = 0.5, makes so only considers predictions with c>= 50%
+    # returns a copy of the frame with bounding boxes 
     results = model.predict(source=frame, conf=0.5, verbose=False)
-    annotated = results[0].plot() # annotated image
+    annotated = results[0].plot()
+
+    # exxtract colors from each detected sticker
+    detected_boxes = results[0].boxes
+    colors_detected = []
+
+    # loop through each detected sticker
+    for box in detected_boxes:
+        sticker_color = extract_color_from_box(frame, box)
+
+        if sticker_color is not None:
+            colors_detected.append(sticker_color)
+
+            # draw the color label on top
+            coords = box.xyxy[0]
+            x = int(coords[0])
+            y = int(coords[1])
+
+            # put colored rectangle as background
+            label_color = BGR_COLORS[sticker_color]
+            cv2.rectangle(annotated, (x, y -25), (x + 40, y), label_color, -1)
+
+            # put letter on top
+            cv2.putText(annotated, sticker_color, (x + 5, y- 8), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0),2)
 
     #fps and box count
     curr_time = time.time()
