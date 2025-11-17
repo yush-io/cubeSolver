@@ -10,11 +10,6 @@ using System;
 // using System.Diagnostics; // also namespace errors
 // using System.Numerics; // not needed? causing namespace problems
 
-// TODO (ranked by priority):
-//   - write test cases for rotate function and dependencies
-//     - number of moves, 
-//   - add scramble function by reversing solution string
-//   - clear up comments and refine coding conventions
 
 public class cubeRotator : MonoBehaviour
 {
@@ -114,10 +109,6 @@ public class cubeRotator : MonoBehaviour
             {
                 faceCubelets.Add(cubelet);
             }
-            // else
-            // {
-            //     Debug.Log("Cubelet: " + cubelet + " not included in face\n");
-            // }
         }
         return faceCubelets;
     }
