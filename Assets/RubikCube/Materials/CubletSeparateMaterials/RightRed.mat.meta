@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0634d2121c9c56149a58aed41d5eda7d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 333226
+  packageName: Rubik Cube
+  packageVersion: 1.0.2
+  assetPath: Assets/RubikCube/Materials/CubletSeparateMaterials/RightRed.mat
+  uploadId: 809382

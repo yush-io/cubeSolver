@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 715496ce602429647a243205ba824ea4
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 333226
+  packageName: Rubik Cube
+  packageVersion: 1.0.2
+  assetPath: Assets/RubikCube/Prefabs/Cublet_SeparateMaterials.prefab
+  uploadId: 809382

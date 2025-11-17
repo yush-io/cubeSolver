@@ -1,0 +1,10 @@
+Third Party Notices
+
+This package, Rubik Cube, does not contain any third-party assets, plugins, or external libraries.
+
+All scripts, prefabs, models, textures, and materials included in this package are original creations of the Rubik Cube development team.
+
+The package is distributed under the Unity Asset Store End User License Agreement (EULA):
+🔗 https://unity.com/legal/as-terms
+
+No additional third-party licenses apply.

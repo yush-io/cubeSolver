@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9fdb34c58e4434641a3f2fa24392c401
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 333226
+  packageName: Rubik Cube
+  packageVersion: 1.0.2
+  assetPath: Assets/RubikCube/Prefabs/RubikCubeInitializer.prefab
+  uploadId: 809382

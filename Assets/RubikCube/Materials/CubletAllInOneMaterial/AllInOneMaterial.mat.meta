@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c8d4a6f9b5c79e34aa94d1ade09ca806
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 333226
+  packageName: Rubik Cube
+  packageVersion: 1.0.2
+  assetPath: Assets/RubikCube/Materials/CubletAllInOneMaterial/AllInOneMaterial.mat
+  uploadId: 809382

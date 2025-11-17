@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2dacb714794fd96438f5897b44493f1e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 333226
+  packageName: Rubik Cube
+  packageVersion: 1.0.2
+  assetPath: Assets/RubikCube/Prefabs/AxisDisplayCamera.prefab
+  uploadId: 809382

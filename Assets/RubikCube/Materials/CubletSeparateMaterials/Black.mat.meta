@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a7f1bb1594c4ab143acfd206ea1089e5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 333226
+  packageName: Rubik Cube
+  packageVersion: 1.0.2
+  assetPath: Assets/RubikCube/Materials/CubletSeparateMaterials/Black.mat
+  uploadId: 809382
