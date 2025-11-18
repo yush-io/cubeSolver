@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using RubikCube;
 using System;
 // using System.Diagnostics; // also namespace errors
-// using System.Numerics; // not needed? causing namespace problems
+// using System.Numerics; // causing namespace problems
 
 
 public class cubeRotator : MonoBehaviour
@@ -26,12 +26,17 @@ public class cubeRotator : MonoBehaviour
     public Transform frontPivot;
     public Transform backPivot;
 
+    // constants
+    const float normalTurn = 90f;
+    const float twoTurns = 180f;
+    const float primeTurn = -90f;
+
     private string[] moves; // will be given from backend/json file 
     private List<Transform> allCubelets = new List<Transform>();
 
     void readMoves()
     {
-        string path = "FIX: CHANGE TO ACTUAL PATHNAME"; // should come from json
+        string path = "FIX: CHANGE TO ACTUAL JSON PATHNAME";
 
         if (File.Exists(path))
         {
@@ -42,7 +47,6 @@ public class cubeRotator : MonoBehaviour
         else
         {
             Debug.LogError("No file found in readMoves function\n");
-            // how to handle error? (quit, restart, modify, etc.)
         }
     }
 
@@ -76,7 +80,6 @@ public class cubeRotator : MonoBehaviour
     // use of math function adapted from official unity 6.2 documentation.
     // face math adapted from https://en.wikipedia.org/wiki/Cube under the
     // "constructions" heading
-    // 
     List<Transform> getFace(string move)
     {
         List<Transform> faceCubelets = new List<Transform>();
@@ -131,9 +134,9 @@ public class cubeRotator : MonoBehaviour
             faceCubelets[i].SetParent(pivot);
         }
 
-        float angle = 90f; // no special add-ons/notation
-        if (move.Contains("'")) angle = -90f; // ' (prime) symbol
-        else if (move.Contains("2")) angle = 180f; // turn twice (180 deg. turn)
+        float angle = normalTurn; 
+        if (move.Contains("'")) angle = primeTurn; 
+        else if (move.Contains("2")) angle = twoTurns; 
 
         Vector3 axis = getAxis(move);
         if (axis == Vector3.zero)
@@ -142,25 +145,22 @@ public class cubeRotator : MonoBehaviour
             yield break;
         }
 
-        float duration = 0.5f; // (of animation)
-        float timeElapsed = 0f; // start
-        float totalDegrees = 0f; // rotations so far
-        // float rotSpeed = 400f;
-        while (timeElapsed < duration)
+        float animationDuration = 0.5f;
+        float timeElapsed = 0f;
+        float totalDegreesRotated = 0f;
+        while (timeElapsed < animationDuration)
         {
-            // float increment = rotSpeed * Time.deltaTime;
-            float increment = (angle / duration) * Time.deltaTime;
+            float increment = (angle / animationDuration) * Time.deltaTime;
 
-            // Rotate(Vector3 axis, float angle, Space relativeTo = Space.Self)
             pivot.Rotate(axis, increment, Space.Self);
 
             timeElapsed += Time.deltaTime;
-            totalDegrees += increment;
+            totalDegreesRotated += increment;
             yield return null; // ensure pausing coroutine at end of frame
         }
 
         // correct any errors in rotation
-        pivot.Rotate(axis, angle - totalDegrees, Space.Self);
+        pivot.Rotate(axis, angle - totalDegreesRotated, Space.Self);
 
         // restore cubes to parent after rotation
         for (int i = 0; i < faceCubelets.Count; ++i)
@@ -211,7 +211,6 @@ public class cubeRotator : MonoBehaviour
 
     void Start()
     {
-        // save only cubelets under parent (cube) and put into list
         for (int i = 0; i < transform.childCount; ++i)
         {
             Transform obj = transform.GetChild(i);
