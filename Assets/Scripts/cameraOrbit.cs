@@ -7,7 +7,7 @@ public class CameraOrbit : MonoBehaviour
     [SerializeField] private Transform cube;
     [SerializeField] private float sensitivity = 5f;
     [SerializeField] private float maximumOrbit = 10f;
-    [SerializeField] private float minimumOrbit = 2f;
+    [SerializeField] private float minimumOrbit = 6f;
 
     private float orbitRadius = 5f;
     private float mouseX = 0f;
