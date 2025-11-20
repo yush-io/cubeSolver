@@ -18,13 +18,17 @@ public class cubeRotator : MonoBehaviour
     {
         public string[] moves;
     }
-    //C:\Users\celso\rubixCube\Assets\Scripts\cubeRotater.cs
+
+    // fields
     public Transform upPivot;
     public Transform downPivot;
     public Transform leftPivot;
     public Transform rightPivot;
     public Transform frontPivot;
     public Transform backPivot;
+
+    bool inRotation = false;
+    int moveIndex = -1; // start before first move
 
     // constants
     const float normalTurn = 90f;
@@ -208,6 +212,24 @@ public class cubeRotator : MonoBehaviour
                     return scramble;
 
     }
+
+    // button funcitonality 
+    IEnumerator executeMove(string move)
+    {
+        inRotation = true;
+        yield return rotateFace(move);
+        inRotation = false;
+    }
+
+    public void nextMove()
+    {
+        if (inRotation) return; // no button spam
+        if (moveIndex == moves.Length -1) return;
+        
+        ++moveIndex;
+        StartCoroutine(executeMove(moves[moveIndex]));
+    }
+
 
     void Start()
     {
