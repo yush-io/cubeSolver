@@ -68,7 +68,71 @@ class CubeStateValidator:
             self.validateEdgeOrient(edgeOrient)
             self.validateParity(cornerPermutation, edgePermutation)
             return True, self.state
-       
+        except ValueError as e:
+            # If we get error -> check to see
+            # maybe cube is fixable by face rotation
+            try:
+                fixed_state = self.SolveOrientation()
+                return True, fixed_state
+            except ValueError:
+                # returns false if truely unsolvable 
+                return False, f"Unsolvable cube: {e}"
+
+    # Attempts to fix the orientation
+    # Brute force checking
+    # returns a corrected 54 char string if succesful or raises valuerror
+    def SolveOrientation(self) -> str:
+        # Breaks the string into 6 faces
+
+        faces = []
+        index = 0
+        while index < 54:
+            faces.append(self.state[index:index + 9])
+            index += 9
+
+        # rotating the faaces
+        rotationMap = [6, 3, 0, 7, 4, 1, 8, 5, 2]
+        
+        def rotateFace(face: str, turns: int) -> str:
+            result = face
+            for _ in range(turns):
+                temp = []
+                for position in rotationMap:
+                    temp.append(result[position])
+                result = "".join(temp)
+            return result
+        
+        # precompute all roatetions of each face
+        rotatedFaces = []
+        for face in faces:
+            types = []
+            for i in range(4):
+                types.append(rotatedFaces(face, i))
+            rotatedFaces.append(types)
+        
+        # brute forcing combination
+        for i in itertools.product(range(4), repeat=6):
+            candidateState = ""
+
+            for faceIndex, rotationindex in enumerate(i):
+                candidateState += rotatedFaces[faceIndex][rotationindex]
+
+            saved_state = self.state
+            self.state = candidateState
+
+            try:
+                # run validations
+                self.checkCenters_Counts()
+                cornerPermutation, cornerOrient = self.extractCorners()
+                edgePermutation, edgeOrient = self.extractEdges()
+                self.validateCornerOrient(cornerOrient)
+                self.validateEdgeOrient(edgeOrient)
+                self.validateParity(cornerPermutation, edgePermutation)
+                return candidateState
+            
+            except ValueError:
+                self.state = saved_state
+        raise ValueError("Could not fix cube orientation; physical stickers may be wrong.")
 
     # Internal Validation Logic
     # Checks valid cube colors
