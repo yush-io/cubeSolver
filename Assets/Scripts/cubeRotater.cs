@@ -7,6 +7,7 @@ using System.Timers;
 using UnityEngine.InputSystem;
 using RubikCube;
 using System;
+using System.Drawing;
 // using System.Diagnostics; // also namespace errors
 // using System.Numerics; // causing namespace problems
 
@@ -27,17 +28,19 @@ public class cubeRotator : MonoBehaviour
     public Transform frontPivot;
     public Transform backPivot;
 
+
     bool inRotation = false;
     int moveIndex = -1; // start before first move
+
+    private string[] moves; // will be given from backend/json file 
+    private List<Transform> allCubelets = new List<Transform>();
 
     // constants
     const float normalTurn = 90f;
     const float twoTurns = 180f;
     const float primeTurn = -90f;
 
-    private string[] moves; // will be given from backend/json file 
-    private List<Transform> allCubelets = new List<Transform>();
-
+    // functions
     void readMoves()
     {
         string path = "FIX: CHANGE TO ACTUAL JSON PATHNAME";
@@ -54,12 +57,12 @@ public class cubeRotator : MonoBehaviour
         }
     }
 
-    IEnumerator executeMoves()
+    IEnumerator executeMoves(string[] moveList)
     {
-        for (int i = 0; i < moves.Length; ++i)
+        for (int i = 0; i < moveList.Length; ++i)
         {
-            Debug.Log("Executing rotation: " + moves[i] + '\n');
-            yield return rotateFace(moves[i]);
+            // Debug.Log("Executing rotation: " + moves[i] + '\n');
+            yield return rotateFace(moveList[i]);
             yield return new WaitForSeconds(0.05f);
         }
     }
@@ -189,28 +192,13 @@ public class cubeRotator : MonoBehaviour
         }
     }
 
-    string[] getScramble(string[] solution){
-        string[] scramble = new string[solution.Length];
-        
-        for (int i = 0; i < solution.Length; ++i)
-        {
-            string move = solution[solution.Length -1 -i];
-            int size = move.Length;
-            char end = move[size -1];
+    string getReverse(string move) 
+    {
+        char last = move[move.Length - 1];
 
-            if (end == '2'){
-                scramble[i] = move;
-
-            }
-            else if (end == '\''){
-                scramble[i] = move.Remove(size -1);
-            } else {
-                scramble[i] = move + '\'';
-
-            }
-        }
-                    return scramble;
-
+        if (last == '2') return move;
+        else if (last == '\'') return move.Remove(move.Length - 1);
+        else return move + '\'';
     }
 
     // button funcitonality 
@@ -224,12 +212,21 @@ public class cubeRotator : MonoBehaviour
     public void nextMove()
     {
         if (inRotation) return; // no button spam
-        if (moveIndex == moves.Length -1) return;
+        if (moveIndex == moves.Length - 1) return;
         
         ++moveIndex;
         StartCoroutine(executeMove(moves[moveIndex]));
     }
 
+    public void previousMove()
+    {
+        if (inRotation) return;
+        if (moveIndex < 0) return;
+
+        string reverse = getReverse(moves[moveIndex]);
+        StartCoroutine(executeMove(reverse));
+        --moveIndex;
+    }
 
     void Start()
     {
@@ -244,8 +241,16 @@ public class cubeRotator : MonoBehaviour
 
         // readMoves();
         // FIXME: HARDCODED MOVES FOR TESTING
-        moves = new string[] { "U2", "R2'", "F2", "D2", "L2", "B'", "U'", "R2", "F", "D'", "L'", "B2" };
-        StartCoroutine(executeMoves());
+        string[] scramble = new string[] { "U2", "R2", "F2", "D2", "L2", "B'", "U'", "R2", "F", "D'", "L'", "B2" };
+        StartCoroutine(executeMoves(scramble));
+
+        moves = new string[scramble.Length];
+
+        for (int i = 0; i < scramble.Length; ++i)
+        {
+            string move = scramble[scramble.Length - 1 - i];
+            moves[i] = getReverse(move);
+        }
 
         return;
     }
