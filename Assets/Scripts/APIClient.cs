@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class APIClient : MonoBehaviour
 {
-    public string endpoint = "http://your_server_ip/upload-photos";
+    public string endpoint = "http://127.0.0.1:8000/upload-photos";
 
     public IEnumerator SendPhotos(List<Texture2D> photos)
     {

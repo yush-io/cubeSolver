@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PhotoManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PhotoManager : MonoBehaviour
     public CameraController cameraController;
     public APIClient apiClient;
     public List<RawImage> photoSlots;  // Should have exactly 6 slots
-    public Text statusText;
+    public TextMeshProUGUI statusText;
 
     private List<Texture2D> capturedPhotos = new List<Texture2D>();
     private const int maxPhotos = 6;
@@ -31,8 +32,26 @@ public class PhotoManager : MonoBehaviour
             if (statusText != null) statusText.text = "All 6 photos already taken.";
             return;
         }
+         // changed and added 
+        Texture2D photo;
+        if (cameraController.useWebcam)
+        {
+            photo = cameraController.CaptureWebcamPhoto();
+        }
+        else
+        {
+            photo = cameraController.CapturePhoto();
+        }
+        if (photo == null)
+        {
+            Debug.LogError("Photo capture failed!");
+            if (statusText != null) statusText.text = "Failed to capture photo!";
+            return;
+        }
 
-        Texture2D photo = cameraController.CapturePhoto();
+        Debug.Log("Photo captured: " + photo.width + "x" + photo.height);
+         //
+
         if (photo == null)
         {
             Debug.LogError("Failed to capture photo!");
