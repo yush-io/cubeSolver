@@ -6,22 +6,24 @@ from abc import ABC, abstractmethod
 
 # Colors in LAB space
 LAB_COLORS = {
-    'W': np.array([100, 0, 0]),
-    'Y': np.array([70, -15, 85]),
-    'R': np.array([30, 80, 67]),
-    'O': np.array([50, 50, 78]),
-    'G': np.array([70, -64, 49]),
-    'B': np.array([30, 79, -90])
+    'W': np.array([93, -1, 10]),
+    'Y': np.array([92, -14, 90]),
+    'R': np.array([53, 80, 67]),
+    'O': np.array([70, 24, 79]),
+    'G': np.array([89, -74, 85]),
+    'B': np.array([46, 6, -46])
 }
+
+
 
 # BGR values for OpenCV not RGB different
 BGR_COLORS = {
-    'W': (255, 255, 255),
-    'Y': (0, 255, 255),
+    'W': (208, 234, 236),
+    'Y': (40, 236, 236),
     'R': (0, 0, 255),
     'O': (0, 165, 255),
-    'G': (0, 255, 0),
-    'B': (255, 0, 0)
+    'G': (0, 255, 102),
+    'B': (187, 110, 41)
 }
 
 # Interface for a color mapper
@@ -46,11 +48,14 @@ class ColorMapper(IColorMapper):
         min_distance = float('inf')
         nearest = None
         
+        # small weight for A/B channels
+        weight = np.array([1.0, 1.2, 1.2])
+
         # Starts a loop a iterate 
         for color_name, ref_lab_color in LAB_COLORS.items():
             # calculate the euclidean distance (uses SciPy library gives the distance between 2 points in 3d space because 
             # LAB has 3 axies)
-            difference_distance = euclidean(lab_color, ref_lab_color)
+            difference_distance = np.linalg.norm((lab_color - ref_lab_color) * weight)
 
             if difference_distance < min_distance:
                 min_distance = difference_distance
@@ -70,11 +75,29 @@ class ColorMapper(IColorMapper):
         side_colors = ""
 
         for roi in cropped_stickers:
-            avg_bgr = np.mean(roi, axis=(0,1))
-            avg_rgb = avg_bgr[::-1] / 255.0 # BGR to RGB
-            avg_lab = skcolor.rgb2lab([[avg_rgb]])[0][0] # convert to LAB using skcolor library
-            color_label = self.nearest_color_calculator(avg_lab) # returns 1 string
-            side_colors += color_label # append to the string
+            h, w = roi.shape[:2]
+
+            # Crop central region to avoid edges/reflections
+            margin_h, margin_w = int(h * 0.2), int(w * 0.2)
+            roi_center = roi[margin_h:h-margin_h, margin_w:w-margin_w]
+
+            # Mask out extremely bright/dark pixels
+            mask = np.all((roi_center > 20) & (roi_center < 235), axis=2)
+            if np.sum(mask) == 0:
+                roi_masked = roi_center
+            else:
+                roi_masked = roi_center[mask]
+
+            # Average BGR -> RGB
+            avg_bgr = np.mean(roi_masked, axis=0) if roi_masked.ndim == 2 else np.mean(roi_masked, axis=0)
+            avg_rgb = avg_bgr[::-1] / 255.0
+
+            # Convert to LAB and clamp L
+            avg_lab = skcolor.rgb2lab([[avg_rgb]])[0][0]
+            avg_lab[0] = np.clip(avg_lab[0], 20, 90)  # clamp L to reduce white misclassification
+
+            color_label = self.nearest_color_calculator(avg_lab)
+            side_colors += color_label
 
         return side_colors
-    
+

@@ -3,11 +3,11 @@
 from ultralytics import YOLO
 import cv2
 import time
-from ColorMapper import extract_color_from_box
+from ColorMapper import ColorMapper
 from ColorMapper import BGR_COLORS
 
 # loads yolo model from file path
-model = YOLO("/Users/aayushr./Desktop/CS Projects/cubeSolver/final-project-elin107-ahuss043-clope375-arash031/backend/yolv8Model/content/runs/detect/train3/weights/best.pt")
+model = YOLO("Users\evana\Documents\cs100project\final-project-elin107-ahuss043-clope375-arash031\backend\yolv8Model\content\runs\detect\train3\weights\best.pt")
 
 cap = cv2.VideoCapture(0) # connection to webcam
 
@@ -38,7 +38,7 @@ while True:
 
     # loop through each detected sticker
     for box in detected_boxes:
-        sticker_color = extract_color_from_box(frame, box)
+        sticker_color = extract_color(box)
 
         if sticker_color is not None:
             colors_detected.append(sticker_color)
