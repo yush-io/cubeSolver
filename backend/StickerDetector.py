@@ -12,7 +12,7 @@ class IStickerDetector(ABC):
 
 class StickerDetector(IStickerDetector):
     
-    def __init__(self, modelPath: str, conf: float = 0.5):
+    def __init__(self, modelPath: str, conf: float = 0.10):
         # constructor for StickerDetector
         # parameters: 
         #   modelPath (str): path to yolov8 model
@@ -21,47 +21,39 @@ class StickerDetector(IStickerDetector):
         self.model = YOLO(modelPath)
         self.conf = conf
        
-    def detectAndCrop(self, frame) -> List[np.ndarray]:
-        # detects the stickers and crops the region from the frame
-        # parameters: 
-        #   frame: np.ndarray (BGR image from cam)
-        # return:
-        #   list of np.ndarray: cropped sticker images 
-    
-        results = self.model.predict(source = frame, conf = self.conf, verbose = False) # detection info
-        boxes = results[0].boxes # extract every bounding box
-        
-        tempList = [] # list to hold ((y1, x1), box) tupes
+    def detectAndCrop(self, frame) -> list:
+        results = self.model.predict(source=frame, conf=self.conf, verbose=False)
+        boxes = results[0].boxes
+
+        # Extract center coordinates
+        box_centers = []
         for box in boxes:
-            #extract top-left coord of every box
-            x1 = int(box.xyxy[0][0])
-            y1 = int(box.xyxy[0][1])
-            tempList.append(((y1, x1), box))
-        
-        tempList.sort() # left to right, top to bottom
-        
-        sortedBoxes = [item[1] for item in tempList] # gets rid of the coordinates in list
-        
-        # reverse each row after sorting because mirror image
-        row1 = sortedBoxes[0:3][::-1]
-        row2 = sortedBoxes[3:6][::-1]
-        row3 = sortedBoxes[6:9][::-1]
-        sortedBoxes = row1 + row2 + row3
-        
-        croppedStickers = [] # list to hold cropped sticker images
-        
-        for box in sortedBoxes:
-            x1, y1, x2, y2 = map(int, box.xyxy[0]) # get all coords of box
-            
-            margin = 5 # margin to crop potential black edges
+            x1, y1, x2, y2 = map(int, box.xyxy[0])
+            cx, cy = (x1 + x2) / 2, (y1 + y2) / 2
+            box_centers.append((box, cx, cy))
+
+        # Sort by Y coordinate to roughly assign rows
+        box_centers.sort(key=lambda b: b[2])  # sort by cy (center y)
+
+        # Cluster into rows (3 stickers per row, assuming 3x3 cube)
+        rows = [box_centers[i*3:(i+1)*3] for i in range(3)]
+
+        # Sort each row by X coordinate (left to right)
+        sorted_boxes = []
+        for row in rows:
+            row.sort(key=lambda b: b[1])  # sort by cx
+            sorted_boxes.extend([b[0] for b in row])
+
+        croppedStickers = []
+        for box in sorted_boxes:
+            x1, y1, x2, y2 = map(int, box.xyxy[0])
+            margin = 5
             x1 = max(0, x1 + margin)
             y1 = max(0, y1 + margin)
             x2 = min(frame.shape[1], x2 - margin)
             y2 = min(frame.shape[0], y2 - margin)
-            
-            regionOfInterest = frame[y1:y2, x1:x2] # crops the sticker region and assigns to roi
-            
-            if regionOfInterest.size > 0:
-                croppedStickers.append(regionOfInterest) # if non-empty add to list
-        
+            roi = frame[y1:y2, x1:x2]
+            if roi.size > 0:
+                croppedStickers.append(roi)
+
         return croppedStickers

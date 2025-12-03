@@ -4,7 +4,8 @@ from ColorMapper import ColorMapper
 
 def main():
     modelPath = "yolv8Model/content/runs/detect/train3/weights/best.pt"
-    imagePath = "images/IMG_0066.jpg"
+    #imagePath = "images/IMG_0066.jpg"
+    imagePath = "test_images/colorTestPhoto.jpg"
     
     detector = StickerDetector(modelPath)
     colorMapper = ColorMapper()

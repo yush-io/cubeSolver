@@ -103,19 +103,19 @@ class CubeStateValidator:
             return result
         
         # precompute all roatetions of each face
-        rotatedFaces = []
+        rotatedFacesList = []
         for face in faces:
             types = []
             for i in range(4):
-                types.append(rotatedFaces(face, i))
-            rotatedFaces.append(types)
+                types.append(rotateFace(face, i))
+            rotatedFacesList.append(types)
         
         # brute forcing combination
         for i in itertools.product(range(4), repeat=6):
             candidateState = ""
 
             for faceIndex, rotationindex in enumerate(i):
-                candidateState += rotatedFaces[faceIndex][rotationindex]
+                candidateState += rotatedFacesList[faceIndex][rotationindex]
 
             saved_state = self.state
             self.state = candidateState
@@ -149,8 +149,8 @@ class CubeStateValidator:
 
         # check for missing colors or incorrect count
         for i in validColors:
-            count = count.get(i,0) # Counter library function to count iterations
-            if count != 9:
+            color_count = count.get(i,0) # Counter library function to count iterations
+            if color_count != 9:
                 raise ValueError("Colors do not appear exactly 9 times each")
         
         # check for unique center colors
