@@ -12,7 +12,7 @@ class IStickerDetector(ABC):
 
 class StickerDetector(IStickerDetector):
     
-    def __init__(self, modelPath: str, conf: float = 0.25):
+    def __init__(self, modelPath: str, conf: float = 0.10):
         # constructor for StickerDetector
         # parameters: 
         #   modelPath (str): path to yolov8 model
