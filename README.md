@@ -52,7 +52,8 @@ Authors: [Evan Lin] https://github.com/Evananlin
    pip install opencv-python-headless
 ## User Interface Specification
 ### Navigation Diagram
-<img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/3e825c1e-3a94-408d-8d23-3527af0250d9" />
+<img width="737" height="1059" alt="image" src="https://github.com/user-attachments/assets/b50424ca-8ab7-40ea-b23f-29e25b5e48bd" />
+
 
 Description: The user interface will consist of a sequence of interactive screens in Unity that guide the user through the entire process: from scanning their physical cube to visualizing the solution. Each screen would be connected through navigation buttons (except for the loading screen), allowing users to capture cube images, review and confirm scans, trigger the solving process, and visualize each step that leads to the final solution. This design ensures a an interative and step-by-step experience.
 
@@ -70,23 +71,9 @@ Description: The user interface will consist of a sequence of interactive screen
   * Webcam Viewport: Displays the live camera feed
   * Button: “Capture Face” → captures one face and saves it
   * Indicator: Shows which cube face is being scanned.
-  * Button: “Next” → move to the next cube face.
   * Button: “Submit” → goes to Review Screen after all 6 faces are captured.
 * Purpose:
   * Gather 6 inputs images for the cube
-#### Review Screen
-* Components:
-  * Thumbnails: 6 captured images labeled by face (U, R, F, D, L, B)
-  * Button: “Retake” goes back to Scan Screen
-  * Button: “Confirm” → proceeds to solving screen
-* Purpose:
-  * Let users confirm their captures before processing
-#### Solving Screen
-* Components:
-  * Loading Animation/Text: “Computing optimal solution…”; animated character running
-  * Progress Bar: Visual feedback during backend API call. If the bar is complete, automatically jump to the 3D visualization screen, else present a "Backend error" and automatically sends back to the scan screen.
-* Purpose: 
-  * Wait screen while Yolov8 + kociemba backend generates a solution string.
 #### 3D Visualization Screen
 * Components:
   * 3D Cube Model: Interactive cube rendered in unity
