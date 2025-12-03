@@ -138,7 +138,53 @@ Adjustment to Client-Server Relationship
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+  * prerequisites:
+    * python 3.9+ installed
+    * ideally, use a virtual environemnt (venv or conda)
+
+ ### Backend setup
+  * Clone the repo
+    * git clone
+  * Activate a virtual environment
+    * python -m venv venv
+    * .\venv\Scripts\activate
+  * install dependencies
+    * pip install -r requirements.txt
+  * run the server on vscode
+    * uvicorn main_API_copy:app --host 127.0.0.1 --port 8000 --reload
+
+ ### Frontend Setup
+  * Running the Executable
+    * double-click RubiksCubeSolver.exe (windows) or the .app file (mac)
+  * Running the Unity Editor
+    * Open the project in Untiy Hub (verision 6000.0.24f1)
+    * opeen the scene: Assets/Scenes/startMenu.unity
+    * Press the Play button at the top
+   
+    
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ ### Backend testing
+Unit testing: We created specific Python scripts to validate the accuracy of inidividual modules before integrating them into the main API.
+
+   * Sticker Detection (testSticker.py):
+     * Purpose: Validates that the YOLOv8 model correctly identifies exactly 9 stickers per face.
+     * Method: Iterates through a test folder of PNG images, runs StickerDetector.detectAndCrop(), and alerts if the count != 9.
+   * Color Analysis (testColor.py):
+     * Purpose: Verifies that the ColorMapper correctly converts extracted ROIs into valid color strings.
+     * Method: Loads raw images, runs detection, and passes the crops to ColorMapper to print the resulting color string (e.g., WWWRRR...) for manual verification against the image.
+   * Solver Logic (testOrientationAndSolver.py):
+     * Purpose: Ensures the string reordering and validation logic works before attempting a solve.
+     * Method: Feeds a hardcoded valid 54-character string into CubeStateValidator and Kociemba to ensure the algorithm returns a valid solution string without crashing.
+   * Api integration testinig: Once unit tests passed, we validated the main_API.py server logic using curl requests. This ensured the 3-pass pipeline (Detection -> Calibration -> Solving) functioned correctly as a cohesive unit.
+     * Setup: The FastAPI server is started locally via uvicorn.
+     * Test: A curl command sends 6 predetermined images (simulating a full cube scan) to the /upload-photos endpoint.
+     * Validation: We check the HTTP response code (200 OK) and verify the returned JSON contains a valid solution string.
+     * Example Curl Command:
+         curl -X POST "http://127.0.0.1:8000/upload-photos" \
+           -F "files=@./test_images/face0.png" \
+           -F "files=@./test_images/face1.png" \
+           ... (etc for 6 files)
+   * End to end system testing
+     * Process: We captured real-time photos using the webcam scene, submitted them to the running backend, and verified that the returned solution string correctly triggered the 3D cube rotation animation.
+     * Edge Cases: We validated error handling by intentionally capturing blurry photos or incomplete scans to ensure the Unity UI displayed appropriate error messages. We also made iterations of different types of scrambles to verify that the backend can properly recieve and solve the solution
  
