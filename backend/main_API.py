@@ -8,7 +8,7 @@ import numpy as np
 from StickerDetector import StickerDetector
 from ColorMapper import ColorMapper
 from cube_validator import CubeStateValidator
-import kociemba
+from KociembaSolver import KociembaSolver
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -28,6 +28,7 @@ os.makedirs(UPLOAD_DEBUG_DIR, exist_ok=True)
 MODEL_PATH = r"C:\Users\evana\Documents\cs100project\final-project-elin107-ahuss043-clope375-arash031\backend\yolv8Model\content\runs\detect\train3\weights\best.pt"
 detector = StickerDetector(MODEL_PATH)
 color_mapper = ColorMapper()
+solver = KociembaSolver()
 
 # Helper for image processing retry logic
 # Sometimes doesn't detect on first try, so we filter the raw image
@@ -175,11 +176,11 @@ async def upload_photos(files: list[UploadFile] = File(...)):
         raise HTTPException(status_code=400, detail=result)
 
     try:
-        solution = kociemba.solve(result)
+        solution = solver.solve(result)
         print(f"Solution: {solution}")
     except Exception as e:
-        print("Kociemba error:", e)
-        raise HTTPException(status_code=500, detail="Solver failed")
+        print("Solver error:", e)
+        raise HTTPException(status_code=500, detail=str(e))
 
     
     return JSONResponse({
