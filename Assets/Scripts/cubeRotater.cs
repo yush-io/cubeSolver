@@ -201,7 +201,8 @@ public class cubeRotator : MonoBehaviour
         else return move + '\'';
     }
 
-    // button funcitonality 
+    // button funcitonality partially adapted from 
+    // https://www.youtube.com/watch?v=gSfdCke3684
     IEnumerator executeMove(string move)
     {
         inRotation = true;

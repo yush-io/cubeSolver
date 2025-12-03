@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/startMenu.unity
+    guid: 1aa639829e74d3d4096bb4d402370d69
+  - enabled: 1
+    path: Assets/Scenes/camerascene.unity
+    guid: 36684b6ddf005644f89f7be998a1d4b3
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/endScreen.unity
+    guid: 33ce7606e80ec294584ec3df7331f497
+  - enabled: 1
     path: Assets/RubikCube/Scenes/RubikCubeScene.unity
     guid: b8a6caa1e57434041863a1a9c8907691
   m_configObjects: {}
