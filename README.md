@@ -173,7 +173,7 @@ Unit testing: We created specific Python scripts to validate the accuracy of ini
    * Solver Logic (testOrientationAndSolver.py):
      * Purpose: Ensures the string reordering and validation logic works before attempting a solve.
      * Method: Feeds a hardcoded valid 54-character string into CubeStateValidator and Kociemba to ensure the algorithm returns a valid solution string without crashing.
-   * Api integration testinig: Once unit tests passed, we validated the main_API.py server logic using curl requests. This ensured the 3-pass pipeline (Detection -> Calibration -> Solving) functioned correctly as a cohesive unit.
+   * Api integration testing: Once unit tests passed, we validated the main_API.py server logic using curl requests. This ensured the 3-pass pipeline (Detection -> Calibration -> Solving) functioned correctly as a cohesive unit.
      * Setup: The FastAPI server is started locally via uvicorn.
      * Test: A curl command sends 6 predetermined images (simulating a full cube scan) to the /upload-photos endpoint.
      * Validation: We check the HTTP response code (200 OK) and verify the returned JSON contains a valid solution string.
