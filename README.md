@@ -137,6 +137,7 @@ Adjustment to Client-Server Relationship
  
  ## Screenshots
  ### Input
+<img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/7916d720-6344-4657-b705-24cdff0d80a8" />
 
  ### Output
  <img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/889a8702-6692-41a0-8418-9496e08dbbe4" />
