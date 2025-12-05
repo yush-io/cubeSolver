@@ -4,6 +4,8 @@ from typing import List
 import cv2
 import os
 import numpy as np
+from pathlib import Path
+
 
 #custom files
 from StickerDetector import StickerDetector
@@ -28,8 +30,8 @@ app.add_middleware(
 UPLOAD_DEBUG_DIR = "debug_uploads"
 os.makedirs(UPLOAD_DEBUG_DIR, exist_ok=True)
 
-# path to yolo model
-MODEL_PATH = "yolv8Model/content/runs/detect/train3/weights/best.pt"
+# path to yolo model, os.path.join to work with windows and mac
+MODEL_PATH = os.path.join("yolv8Model", "content", "runs", "detect", "train3", "weights", "best.pt")
 
 # create objects used for detection, color mapping, and solving
 detector = StickerDetector(MODEL_PATH)
