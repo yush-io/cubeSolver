@@ -136,7 +136,12 @@ Adjustment to Client-Server Relationship
 >  * Each team member should also submit the Peer Evaluation Form on Canvas for this final phase. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for the final phase, and a description of their contributions. Remember that each team member should submit the form individually.
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+ ### Input
+
+ ### Output
+ <img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/889a8702-6692-41a0-8418-9496e08dbbe4" />
+<img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/0a9668ff-73e7-40b7-acc4-3ed5c64ce40f" />
+
  ## Installation/Usage
   * prerequisites:
     * python 3.9+ installed
