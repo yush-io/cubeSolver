@@ -20,7 +20,6 @@ def test_init_rejects_unknown_color():
 
 
 def test_validate_solved_cube_is_valid():
-    # solved cube in your "color" space:
     # W = U, R = R, G = F, Y = D, O = L, B = B
     raw = (
         "W" * 9 +  # U
@@ -66,12 +65,11 @@ def test_validate_rejects_wrong_color_counts():
 
 
 def test_getPermutation_parity():
-    # simple parity sanity check:
+    # simple parity check:
     # identity permutation -> even (0)
     # simple swap -> odd (1)
     from cube_validator import CubeStateValidator as CV
 
     assert CV.getPermutation([0, 1, 2, 3]) == 0
     assert CV.getPermutation([1, 0, 2, 3]) == 1
-    assert CV.getPermutation([2, 1, 0, 3]) == 1  # 2 inversions (0,2) and (1,2) -> even parity 0? wait, check:
-    # but we don't need to overcomplicate, just sanity check behavior
+    assert CV.getPermutation([2, 1, 0, 3]) == 1 

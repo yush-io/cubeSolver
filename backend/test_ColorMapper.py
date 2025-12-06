@@ -20,7 +20,7 @@ def test_nearest_color_calculator_exact_lab_match():
 
 
 def test_roi_to_lab_basic_shape_and_range():
-    # test that roi_to_lab returns a lab vector with sane values
+    # test that roi_to_lab returns a lab vector with normal values
     mapper = ColorMapper()
 
     # bright-ish blue-ish roi in BGR (blue channel high)
@@ -38,7 +38,7 @@ def test_roi_to_lab_basic_shape_and_range():
 
 
 def test_roi_to_lab_empty_roi_returns_zero():
-    # if for some reason roi is empty, we expect [0,0,0]
+    # if for some reason roi is empty, expect [0,0,0]
     mapper = ColorMapper()
     empty_roi = np.zeros((0, 0, 3), dtype=np.uint8)
     lab = mapper.roi_to_lab(empty_roi)

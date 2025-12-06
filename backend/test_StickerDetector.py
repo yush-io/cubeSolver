@@ -1,14 +1,12 @@
-# test_stickerdetector.py
-
 import numpy as np
 import pytest
 
-import StickerDetector as sd_mod  # module where StickerDetector is defined
+import StickerDetector as sd_mod 
 
 
 class FakeBox:
     def __init__(self, x1, y1, x2, y2):
-        # mimic yolo box.xyxy[0] behavior
+        # replicating yolo box.xyxy[0] behavior
         self.xyxy = np.array([[x1, y1, x2, y2]])
 
 
@@ -19,7 +17,6 @@ class FakeResult:
 
 class FakeYOLO:
     def __init__(self, modelPath):
-        # ignore modelPath, no real loading
         self.modelPath = modelPath
 
     def predict(self, source, conf=0.1, verbose=False):
@@ -45,7 +42,7 @@ def test_detect_and_crop_returns_9_rois(monkeypatch):
 
     detector = sd_mod.StickerDetector("dummy/path.pt")
 
-    # make a fake frame (just needs correct shape)
+    # make a fake frame with the correct shape
     frame_h, frame_w = 100, 100
     frame = np.zeros((frame_h, frame_w, 3), dtype=np.uint8)
 

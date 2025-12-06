@@ -3,7 +3,7 @@ import numpy as np
 import pytest
 from fastapi.testclient import TestClient
 
-import main_API  # or whatever your file is actually named
+import main_API
 
 
 def make_fake_image_bytes():
@@ -11,7 +11,7 @@ def make_fake_image_bytes():
     import cv2
 
     img = np.zeros((10, 10, 3), dtype=np.uint8)
-    img[:, :] = (0, 0, 255)  # blue-ish, but we don't actually care
+    img[:, :] = (0, 0, 255)  # blue-ish
     success, buf = cv2.imencode(".jpg", img)
     assert success
     return io.BytesIO(buf.tobytes())
@@ -33,7 +33,7 @@ def test_upload_photos_wrong_file_count():
 def test_upload_photos_happy_path(monkeypatch):
     client = TestClient(main_API.app)
 
-    # --- fake detector ---
+    # fake detector
     class FakeDetector:
         def detectAndCrop(self, frame):
             # return 9 fake "roi" images per face
@@ -42,7 +42,7 @@ def test_upload_photos_happy_path(monkeypatch):
                 rois.append(np.zeros((10, 10, 3), dtype=np.uint8))
             return rois
 
-    # --- fake color mapper ---
+    # fake color mapper
     class FakeColorMapper:
         def roi_to_lab(self, roi):
             # return dummy lab
@@ -56,16 +56,16 @@ def test_upload_photos_happy_path(monkeypatch):
             # pretend faces are scanned as: W, R, G, Y, O, B
             return ['W', 'R', 'G', 'Y', 'O', 'B']
 
-    # --- fake cube validator ---
+    # fake cube validator
     class FakeValidator:
         def __init__(self, state):
             self.state = state
 
         def validate(self):
             # always valid, return some kociemba string
-            return True, "URFDLB" * 9  # not real, just a placeholder
+            return True, "URFDLB" * 9  # not real, just placeholder
 
-    # --- fake solver ---
+    # fake solver
     class FakeSolver:
         def solve(self, state_string: str) -> str:
             return "R U R' U'"
