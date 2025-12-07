@@ -12,8 +12,6 @@ using System.Drawing;
 // using System.Numerics; // causing namespace problems
 
 
-
-
 public class cubeRotator : MonoBehaviour
 {
     // may need to add second string member for scramble
@@ -31,11 +29,10 @@ public class cubeRotator : MonoBehaviour
     public Transform backPivot;
 
 
-
     bool inRotation = false;
     int moveIndex = -1; // start before first move
 
-    private string[] moves; // hold moves  given from backend/json file 
+    private string[] moves; // will be given from backend/json file 
     private List<Transform> allCubelets = new List<Transform>();
 
     // constants
@@ -43,36 +40,22 @@ public class cubeRotator : MonoBehaviour
     const float twoTurns = 180f;
     const float primeTurn = -90f;
 
-
     // functions
-
-    public void ApplySolution(string[] solverSolution)
-{
-    if (solverSolution == null || solverSolution.Length == 0)
+    void readMoves()
     {
-        Debug.LogError("ApplySolution called with empty solution.");
-        return;
+        string path = "FIX: CHANGE TO ACTUAL JSON PATHNAME";
+
+        if (File.Exists(path))
+        {
+            string movesStr = File.ReadAllText(path);
+            Moves moveList = JsonUtility.FromJson<Moves>(movesStr);
+            moves = moveList.moves;
+        }
+        else
+        {
+            Debug.LogError("No file found in readMoves function\n");
+        }
     }
-
-    Debug.Log("ApplySolution called with: " + string.Join(" ", solverSolution));
-
-    // Build scramble: reverse of solution + invert each move
-    string[] scramble = new string[solverSolution.Length];
-    for (int i = 0; i < solverSolution.Length; i++)
-    {
-        string solMove = solverSolution[solverSolution.Length - 1 - i];
-        scramble[i] = getReverse(solMove);
-    }
-
-    Debug.Log("Scramble being animated: " + string.Join(" ", scramble));
-
-    // Run the scramble on the cube
-    StartCoroutine(executeMoves(scramble));
-
-    // Store the original solution moves for next/previous stepping
-    moves = solverSolution;
-    moveIndex = -1;
-}
 
     IEnumerator executeMoves(string[] moveList)
     {
@@ -128,11 +111,11 @@ public class cubeRotator : MonoBehaviour
             {
                 faceCubelets.Add(cubelet);
             }
-            else if (move[0] == 'F' && Mathf.Abs(cubelet.position.z + 1f) < separation) // front face
+            else if (move[0] == 'F' && Mathf.Abs(cubelet.position.z - 1f) < separation) // front face
             {
                 faceCubelets.Add(cubelet);
             }
-            else if (move[0] == 'B' && Mathf.Abs(cubelet.position.z - 1f) < separation) // back face
+            else if (move[0] == 'B' && Mathf.Abs(cubelet.position.z + 1f) < separation) // back face
             {
                 faceCubelets.Add(cubelet);
             }
@@ -161,11 +144,6 @@ public class cubeRotator : MonoBehaviour
         float angle = normalTurn; 
         if (move.Contains("'")) angle = primeTurn; 
         else if (move.Contains("2")) angle = twoTurns; 
-
-        if (move[0] == 'L' || move[0] == 'R')
-        {
-            angle = -angle;
-        }
 
         Vector3 axis = getAxis(move);
         if (axis == Vector3.zero)
@@ -234,7 +212,7 @@ public class cubeRotator : MonoBehaviour
 
     public void nextMove()
     {
-        if (inRotation) return; 
+        if (inRotation) return; // no button spam
         if (moveIndex == moves.Length - 1) return;
         
         ++moveIndex;
@@ -262,17 +240,19 @@ public class cubeRotator : MonoBehaviour
             }
         }
 
-        Debug.Log("cubeRotator started in SampleScene.");
+        // readMoves();
+        // FIXME: HARDCODED MOVES FOR TESTING
+        string[] scramble = new string[] { "U2", "R2", "F2", "D2", "L2", "B'", "U'", "R2", "F", "D'", "L'", "B2" };
+        StartCoroutine(executeMoves(scramble));
 
-        if (SolutionStore.LatestSolution != null && SolutionStore.LatestSolution.Length > 0)
+        moves = new string[scramble.Length];
+
+        for (int i = 0; i < scramble.Length; ++i)
         {
-            Debug.Log("cubeRotator: Got solution from SolutionStore: " +
-                    string.Join(" ", SolutionStore.LatestSolution));
-            ApplySolution(SolutionStore.LatestSolution);
+            string move = scramble[scramble.Length - 1 - i];
+            moves[i] = getReverse(move);
         }
-        else
-        {
-            Debug.Log("cubeRotator: No solution in SolutionStore.");
-        }
+
+        return;
     }
 }

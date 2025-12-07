@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class PhotoManager : MonoBehaviour
 {
@@ -99,30 +98,12 @@ public class PhotoManager : MonoBehaviour
         if (statusText != null) statusText.text = "Uploading photos...";
         Debug.Log("Uploading photos...");
 
-        
-        yield return StartCoroutine(apiClient.SendPhotos(capturedPhotos, OnSolutionReceived));
+        yield return StartCoroutine(apiClient.SendPhotos(capturedPhotos));
 
         Debug.Log("Upload complete!");
+        if (statusText != null) statusText.text = "Upload complete!";
+
+        // If you want to change scene after upload, uncomment:
+        // UnityEngine.SceneManagement.SceneManager.LoadScene("CubeSolverScene");
     }
-
-    private void OnSolutionReceived(string[] solution)
-    {
-        // initial checks
-        if(solution == null || solution.Length == 0)
-        {
-            Debug.LogError("No solution returned!");
-            if (statusText != null) 
-                statusText.text = "No solution returned!";
-            return;
-        }
-        Debug.Log("Solution from backend: " + string.Join(" ", solution));
-
-        SolutionStore.LatestSolution = solution;
-        Debug.Log("PhotoManager: Stored solution in SolutionStore. Length = " + solution.Length);
-
-        // now loads not on button click but after solution is stored. 
-        // wont move on if no solution in SolutionStore static class 
-        SceneManager.LoadScene("SampleScene");
-    }
-
 }
