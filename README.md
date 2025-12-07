@@ -152,8 +152,12 @@ Adjustment to Client-Server Relationship
     * uvicorn main_API_copy:app --host 127.0.0.1 --port 8000 --reload
 
  ### Frontend Setup
-  * Running the Executable
-    * double-click RubiksCubeSolver.exe (windows) or the .app file (mac)
+  * Download zip from googleDrive (file to large)
+    * https://drive.google.com/file/d/1ofLeoPI9VG_OTFNXzyyepKvrrS-nJM-l/view?usp=sharing
+    * Run the run_game.bat file
+
+  
+  
   * Running the Unity Editor
     * Open the project in Untiy Hub (verision 6000.0.24f1)
     * opeen the scene: Assets/Scenes/startMenu.unity
