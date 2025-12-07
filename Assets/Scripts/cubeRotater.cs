@@ -47,31 +47,31 @@ public class cubeRotator : MonoBehaviour
     // functions
 
     public void ApplySolution(string[] solverSolution)
-{
-    if (solverSolution == null || solverSolution.Length == 0)
     {
-        Debug.LogError("ApplySolution called with empty solution.");
-        return;
-    }
+        if (solverSolution == null || solverSolution.Length == 0)
+        {
+            Debug.LogError("ApplySolution called with empty solution.");
+            return;
+        }
 
-    Debug.Log("ApplySolution called with: " + string.Join(" ", solverSolution));
+        Debug.Log("ApplySolution called with: " + string.Join(" ", solverSolution));
 
-    // Build scramble: reverse of solution + invert each move
-    string[] scramble = new string[solverSolution.Length];
-    for (int i = 0; i < solverSolution.Length; i++)
-    {
-        string solMove = solverSolution[solverSolution.Length - 1 - i];
-        scramble[i] = getReverse(solMove);
-    }
+        // Build scramble: reverse of solution + invert each move
+        string[] scramble = new string[solverSolution.Length];
+        for (int i = 0; i < solverSolution.Length; i++)
+        {
+            string solMove = solverSolution[solverSolution.Length - 1 - i];
+            scramble[i] = getReverse(solMove);
+        }
 
-    Debug.Log("Scramble being animated: " + string.Join(" ", scramble));
+        Debug.Log("Scramble being animated: " + string.Join(" ", scramble));
 
-    // Run the scramble on the cube
-    StartCoroutine(executeMoves(scramble));
+        // Run scramble algorithm on the cube
+        StartCoroutine(executeMoves(scramble));
 
-    // Store the original solution moves for next/previous stepping
-    moves = solverSolution;
-    moveIndex = -1;
+        // Store the original solution moves for next/previous stepping
+        moves = solverSolution;
+        moveIndex = -1;
 }
 
     IEnumerator executeMoves(string[] moveList)
