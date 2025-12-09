@@ -100,7 +100,7 @@ Description: The class diagram above represents the overall architecture of the 
  
 ### Updated Class Diagram with SOLID principles
 
-<img width="963" height="1101" alt="image" src="https://github.com/user-attachments/assets/5f9ee896-becb-4b53-b356-0d3ee6804056" />
+<img width="1121" height="1206" alt="image" src="https://github.com/user-attachments/assets/41a5481f-1ca6-4edd-905c-120ca9e71d6b" />
 
 
 ### Explaning Class Diagram Changes
@@ -127,16 +127,14 @@ Adjustment to Client-Server Relationship
 
 
  
- > ## Final deliverable
- > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history.
->  * Each team member should also submit the Peer Evaluation Form on Canvas for this final phase. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for the final phase, and a description of their contributions. Remember that each team member should submit the form individually.
- 
  ## Screenshots
- > Screenshots of the input/output after running your application
+ ### Input
+<img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/7916d720-6344-4657-b705-24cdff0d80a8" />
+
+ ### Output
+ <img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/889a8702-6692-41a0-8418-9496e08dbbe4" />
+<img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/0a9668ff-73e7-40b7-acc4-3ed5c64ce40f" />
+
  ## Installation/Usage
   * prerequisites:
     * python 3.9+ installed
@@ -154,14 +152,19 @@ Adjustment to Client-Server Relationship
     * uvicorn main_API_copy:app --host 127.0.0.1 --port 8000 --reload
 
  ### Frontend Setup
-  * Running the Executable
-    * double-click RubiksCubeSolver.exe (windows) or the .app file (mac)
+  * Download zip from googleDrive (file to large)
+    * https://drive.google.com/file/d/1ofLeoPI9VG_OTFNXzyyepKvrrS-nJM-l/view?usp=sharing
+    * Run the run_game.bat file
+
+  
+  
   * Running the Unity Editor
     * Open the project in Untiy Hub (verision 6000.0.24f1)
     * opeen the scene: Assets/Scenes/startMenu.unity
     * Press the Play button at the top
-   
-    
+  * pre-recorded demo:
+    * https://drive.google.com/file/d/11Z_G5KCX4AmxtMvTXT1RZV9cSnErHmcd/view?usp=sharing
+ 
  ## Testing
  ### Backend testing
 Unit testing: We created specific Python scripts to validate the accuracy of inidividual modules before integrating them into the main API.
@@ -175,7 +178,7 @@ Unit testing: We created specific Python scripts to validate the accuracy of ini
    * Solver Logic (testOrientationAndSolver.py):
      * Purpose: Ensures the string reordering and validation logic works before attempting a solve.
      * Method: Feeds a hardcoded valid 54-character string into CubeStateValidator and Kociemba to ensure the algorithm returns a valid solution string without crashing.
-   * Api integration testinig: Once unit tests passed, we validated the main_API.py server logic using curl requests. This ensured the 3-pass pipeline (Detection -> Calibration -> Solving) functioned correctly as a cohesive unit.
+   * Api integration testing: Once unit tests passed, we validated the main_API.py server logic using curl requests. This ensured the 3-pass pipeline (Detection -> Calibration -> Solving) functioned correctly as a cohesive unit.
      * Setup: The FastAPI server is started locally via uvicorn.
      * Test: A curl command sends 6 predetermined images (simulating a full cube scan) to the /upload-photos endpoint.
      * Validation: We check the HTTP response code (200 OK) and verify the returned JSON contains a valid solution string.

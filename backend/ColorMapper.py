@@ -5,7 +5,7 @@ from typing import List
 from sklearn.cluster import KMeans
 
 
-# Reference LAB colors
+# reference LAB colors
 LAB_COLORS = {
     'W': np.array([90.0,   1.6,  -3.0]),   # white
     'Y': np.array([78.0, -15.0,  35.0]),   # yellow
@@ -34,16 +34,16 @@ class ColorMapper(IColorMapper):
     def roi_to_lab(self, roi_bgr: np.ndarray) -> np.ndarray:
         h, w = roi_bgr.shape[:2]
 
-        # Crop away 25% border
+        # removing 25% of the border and assigning that as center
         margin_h, margin_w = int(h * 0.25), int(w * 0.25)
         roi_center = roi_bgr[margin_h:h - margin_h, margin_w:w - margin_w]
 
-        # Flatten pixels
+        # flatten into pixels
         pixels = roi_center.reshape(-1, 3)
         if len(pixels) == 0: return np.array([0, 0, 0])
 
-        # Filter out extreme darkness/brightness
-        # Widen range to 10-250 to catch dark blues and bright yellows
+        # filters out extreme darkness/brightness
+        # widen range to 10-250 to catch dark blues and bright yellows (gets mixed up with white sometimes)
         gray = 0.299 * pixels[:, 2] + 0.587 * pixels[:, 1] + 0.114 * pixels[:, 0]
         mask = (gray > 10) & (gray < 250)
         valid_pixels = pixels[mask]
@@ -51,7 +51,8 @@ class ColorMapper(IColorMapper):
         if len(valid_pixels) < 10:
             valid_pixels = pixels
 
-        # Use K-Means to find the dominant color
+        # usse K-Means to find the dominant color
+        # point is to ignore glare/reflections/noise
         try:
             kmeans = KMeans(n_clusters=1, n_init=10)
             kmeans.fit(valid_pixels)
@@ -59,14 +60,14 @@ class ColorMapper(IColorMapper):
         except:
             dominant_bgr = valid_pixels.mean(axis=0)
 
-        # Convert Dominant BGR -> LAB
+        # convert bgr -> rgb -> lab
         avg_rgb = dominant_bgr[::-1] / 255.0
         avg_lab = skcolor.rgb2lab(avg_rgb.reshape(1, 1, 3))[0, 0]
 
-        # Clamp L slightly to prevent nonsensical values
+        # clamp L slightly to prevent impossibly bright values
         avg_lab[0] = np.clip(avg_lab[0], 10, 95)
 
-        return avg_lab
+        return avg_lab # [L, A, B]
 
     # find the neaerest reference color
     def nearest_color_calculator(self, lab_color: np.ndarray) -> str:
@@ -75,12 +76,11 @@ class ColorMapper(IColorMapper):
 
         # WEIGHTS: [L, A, B]
         # We emphasize A/B (2.0) to distinguish colors.
-        # We de-emphasize L (0.5) so glare doesn't turn colors like yellow
-        # into White.
+        # We de-emphasize L (0.5) so glare doesn't turn colors like yellow into white.
         weight = np.array([0.5, 2.0, 2.0])
 
         for color_name, ref_lab_color in LAB_COLORS.items():
-            diff = (lab_color - ref_lab_color) * weight
+            diff = (lab_color - ref_lab_color) * weight # Using Euclidenan Distance to to find the closest match
             difference_distance = np.linalg.norm(diff)
 
             if difference_distance < min_distance:
@@ -89,8 +89,8 @@ class ColorMapper(IColorMapper):
 
         return nearest
 
-    # Matches the 6 detected centers against the known referene colors
-    # uses a global best fit algorithm to handle random scan orders and lighting issues
+    # Matches the 6 detected centers against the known reference colors
+    # Uses a global best fit algorithm to handle random scan orders
     def identify_centers(self, centers: List[np.ndarray]) -> List[str]:
         target_names = list(LAB_COLORS.keys()) # ['W', 'Y', 'R', 'O', 'G', 'B']
         
@@ -103,7 +103,7 @@ class ColorMapper(IColorMapper):
                 diff = detected - ref
                 weight = np.array([0.5, 2.0, 2.0]) 
                 dist = np.linalg.norm(diff * weight)
-                distances[i][j] = dist
+                distances[i][j] = dist # each cell = how close the center color is to reference color
 
         assigned_labels = [None] * 6
         used_targets = set()
@@ -126,7 +126,7 @@ class ColorMapper(IColorMapper):
                         best_file_idx = r
                         best_target_idx = c
             
-            # Lock it in
+            # Lock the color in
             color_char = target_names[best_target_idx]
             assigned_labels[best_file_idx] = color_char
             used_targets.add(best_target_idx)

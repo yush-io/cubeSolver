@@ -25,26 +25,27 @@ class StickerDetector(IStickerDetector):
         results = self.model.predict(source=frame, conf=self.conf, verbose=False)
         boxes = results[0].boxes
 
-        # Extract center coordinates
+        # gets the coordinates for the center piece boxes
         box_centers = []
         for box in boxes:
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             cx, cy = (x1 + x2) / 2, (y1 + y2) / 2
             box_centers.append((box, cx, cy))
 
-        # Sort by Y coordinate to roughly assign rows
-        box_centers.sort(key=lambda b: b[2])  # sort by cy (center y)
+        # sort by y coordinate to roughly assign rows
+        box_centers.sort(key=lambda b: b[2])  # sort by center y
 
-        # Cluster into rows (3 stickers per row, assuming 3x3 cube)
+        # cluster into rows with 3 stickers per row
         rows = [box_centers[i*3:(i+1)*3] for i in range(3)]
 
-        # Sort each row by X coordinate (left to right)
+        # sort each row by x coordinate (left -> right)
         sorted_boxes = []
         for row in rows:
-            row.sort(key=lambda b: b[1])  # sort by cx
+            row.sort(key=lambda b: b[1])  # sort by center x
             sorted_boxes.extend([b[0] for b in row])
 
         croppedStickers = []
+        # apply the border reduction so we have the coordinate of the sticker roi
         for box in sorted_boxes:
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             margin = 5
@@ -54,6 +55,6 @@ class StickerDetector(IStickerDetector):
             y2 = min(frame.shape[0], y2 - margin)
             roi = frame[y1:y2, x1:x2]
             if roi.size > 0:
-                croppedStickers.append(roi)
+                croppedStickers.append(roi) # if exists, append
 
         return croppedStickers
