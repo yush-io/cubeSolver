@@ -3,12 +3,92 @@
   "WorkspaceRootPath": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BA0B5B16-7699-F978-E74B-800512E2FA0C}|Tests.csproj|c:\\users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\assets\\scripts\\editor\\cuberotatortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0B5B16-7699-F978-E74B-800512E2FA0C}|Tests.csproj|solutionrelative:assets\\scripts\\editor\\cuberotatortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\cubeRotater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\cubeRotater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\Editor\\NewEmptyCSharpScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Editor\\NewEmptyCSharpScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\EditModeTests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\EditMode\\EditModeTests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\CubeRotator_EditModeTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\PlayMode\\CubeRotator_EditModeTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\EditMode\\Tests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\PlayModeTests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\PlayMode\\PlayModeTests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests..asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests..asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests 2\\Tests 2.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests 2\\Tests 2.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests 1\\Tests 1.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests 1\\Tests 1.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\EditModeTestSample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\EditMode\\EditModeTestSample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_PlayModeTests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\EditMode\\CubeRotator_PlayModeTests.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\CubeRotatorTester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CubeRotatorTester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\APIClient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\APIClient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\CameraController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CameraController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\PhotoManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\PhotoManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scenes\\camerascene.unity.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\camerascene.unity.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scenes\\camerascene.unity||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\camerascene.unity||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\CubeRotator_PlayModeTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\PlayMode\\CubeRotator_PlayModeTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,6 +103,245 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CubeRotatorTests.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\Editor\\CubeRotatorTests.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Editor\\CubeRotatorTests.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\Editor\\CubeRotatorTests.cs*",
+              "RelativeToolTip": "Assets\\Scripts\\Editor\\CubeRotatorTests.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T00:26:37.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NewEmptyCSharpScript.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\Editor\\NewEmptyCSharpScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Editor\\NewEmptyCSharpScript.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\Editor\\NewEmptyCSharpScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Editor\\NewEmptyCSharpScript.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T00:26:05.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CubeRotator_EditModeTests.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\CubeRotator_EditModeTests.cs",
+              "RelativeDocumentMoniker": "Assets\\Tests\\PlayMode\\CubeRotator_EditModeTests.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\CubeRotator_EditModeTests.cs",
+              "RelativeToolTip": "Assets\\Tests\\PlayMode\\CubeRotator_EditModeTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T00:05:20.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Tests.asmdef",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests.asmdef",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\Tests.asmdef",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests.asmdef",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\Tests.asmdef",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "WhenOpened": "2025-12-05T23:58:31.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "cubeRotater.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\cubeRotater.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\cubeRotater.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\cubeRotater.cs",
+              "RelativeToolTip": "Assets\\Scripts\\cubeRotater.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T01:00:05.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditModeTests.asmdef",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\EditModeTests.asmdef",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\EditModeTests.asmdef",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\EditModeTests.asmdef",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\EditModeTests.asmdef",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "WhenOpened": "2025-12-06T00:09:50.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CubeRotator_EditModeTests.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.cs",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.cs",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T20:30:20.837Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlayModeTests.asmdef",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\PlayModeTests.asmdef",
+              "RelativeDocumentMoniker": "Assets\\Tests\\PlayMode\\PlayModeTests.asmdef",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\PlayModeTests.asmdef",
+              "RelativeToolTip": "Assets\\Tests\\PlayMode\\PlayModeTests.asmdef",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "WhenOpened": "2025-12-05T22:49:47.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Tests 2.asmdef",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests 2\\Tests 2.asmdef",
+              "RelativeDocumentMoniker": "Assets\\Tests 2\\Tests 2.asmdef",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests 2\\Tests 2.asmdef",
+              "RelativeToolTip": "Assets\\Tests 2\\Tests 2.asmdef",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "WhenOpened": "2025-12-05T23:46:57.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CubeRotator_EditModeTests..asmdef",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests..asmdef",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests..asmdef",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests..asmdef",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests..asmdef",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "WhenOpened": "2025-12-05T23:48:49.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CubeRotator_EditModeTests.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests.cs",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests.cs",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\Tests\\CubeRotator_EditModeTests.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T23:50:33.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Tests 1.asmdef",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests 1\\Tests 1.asmdef",
+              "RelativeDocumentMoniker": "Assets\\Tests 1\\Tests 1.asmdef",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests 1\\Tests 1.asmdef",
+              "RelativeToolTip": "Assets\\Tests 1\\Tests 1.asmdef",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "WhenOpened": "2025-12-05T23:46:50.258Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EditModeTestSample.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\EditModeTestSample.cs",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\EditModeTestSample.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\EditModeTestSample.cs",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\EditModeTestSample.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T23:44:02.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CubeRotator_EditModeTests.asmdef",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.asmdef",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.asmdef",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.asmdef",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\CubeRotator_EditModeTests.asmdef",
+              "ViewState": "AgIAADcAAAAAAAAAAAAowEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "WhenOpened": "2025-12-05T22:59:52.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CubeRotator_PlayModeTests.asmdef",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_PlayModeTests.asmdef",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\CubeRotator_PlayModeTests.asmdef",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\EditMode\\CubeRotator_PlayModeTests.asmdef",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\CubeRotator_PlayModeTests.asmdef",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "WhenOpened": "2025-12-05T22:50:57.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CubeRotator_PlayModeTests.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\CubeRotator_PlayModeTests.cs",
+              "RelativeDocumentMoniker": "Assets\\Tests\\PlayMode\\CubeRotator_PlayModeTests.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Tests\\PlayMode\\CubeRotator_PlayModeTests.cs",
+              "RelativeToolTip": "Assets\\Tests\\PlayMode\\CubeRotator_PlayModeTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:30:45.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CubeRotatorTester.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\CubeRotatorTester.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CubeRotatorTester.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\CubeRotatorTester.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CubeRotatorTester.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T01:09:11.003Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "APIClient.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\APIClient.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\APIClient.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\APIClient.cs",
+              "RelativeToolTip": "Assets\\Scripts\\APIClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T20:17:59.767Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CameraController.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\CameraController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CameraController.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scripts\\CameraController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CameraController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAIwCsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T20:06:20.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PhotoManager.cs",
+              "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\PhotoManager.cs",
+              "RelativeDocumentMoniker": "Assets\\PhotoManager.cs",
+              "ToolTip": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\PhotoManager.cs",
+              "RelativeToolTip": "Assets\\PhotoManager.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T19:56:32.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "camerascene.unity.meta",
               "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scenes\\camerascene.unity.meta",
               "RelativeDocumentMoniker": "Assets\\Scenes\\camerascene.unity.meta",
@@ -33,7 +352,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 19,
               "Title": "camerascene.unity",
               "DocumentMoniker": "C:\\Users\\abdul\\final-project-elin107-ahuss043-clope375-arash031\\Assets\\Scenes\\camerascene.unity",
               "RelativeDocumentMoniker": "Assets\\Scenes\\camerascene.unity",

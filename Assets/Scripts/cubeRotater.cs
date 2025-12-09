@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEngine.TextCore;
-using System.Timers;
-using UnityEngine.InputSystem;
-using RubikCube;
-using System;
-using System.Drawing;
-// using System.Diagnostics; // also namespace errors
-// using System.Numerics; // causing namespace problems
+//using UnityEngine.TextCore;
+//using System.Timers;
+//using UnityEngine.InputSystem;
+//using RubikCube;
+//removed this line due to errors 
+//using System;
+//using System.Drawing;
+//using System.Diagnostics; // also namespace errors
+//using System.Numerics; // causing namespace problems
 
 
-public class cubeRotator : MonoBehaviour
+public class cubeRotater : MonoBehaviour
 {
     // may need to add second string member for scramble
     private class Moves
@@ -67,8 +68,12 @@ public class cubeRotator : MonoBehaviour
         }
     }
 
-    Transform getPivot(string move)
+    public Transform getPivot(string move)
     {
+
+        if (string.IsNullOrEmpty(move))
+            return null;
+
         char pivot = move[0];
 
         if (pivot == 'U') return upPivot;
@@ -77,11 +82,7 @@ public class cubeRotator : MonoBehaviour
         else if (pivot == 'R') return rightPivot;
         else if (pivot == 'F') return frontPivot;
         else if (pivot == 'B') return backPivot;
-        else
-        {
-            Debug.LogError("ERROR: invalid pivot/move in getPivot\n");
-            return null;
-        }
+        else return null;
     }
 
     // use of math function adapted from official unity 6.2 documentation.
@@ -177,7 +178,7 @@ public class cubeRotator : MonoBehaviour
 
     }
 
-    Vector3 getAxis(string move)
+    /*public Vector3 getAxis(string move)
     {
         if (move[0] == 'U') return Vector3.up;
         else if (move[0] == 'D') return Vector3.down;
@@ -190,9 +191,28 @@ public class cubeRotator : MonoBehaviour
             Debug.LogError("ERROR: invalid axis in getAxis\n");
             return Vector3.zero;
         }
-    }
+    }*/
 
-    string getReverse(string move) 
+    // had to create a new updated better test to pass the tests 
+    public Vector3 getAxis(string move)
+    {
+
+        if (string.IsNullOrEmpty(move))
+            return Vector3.zero;
+
+            char m = move[0];
+
+        if (m == 'U') return Vector3.up;
+        else if (move[0] == 'D') return Vector3.down;
+        else if (move[0] == 'L') return Vector3.left;
+        else if (move[0] == 'R') return Vector3.right;
+        else if (move[0] == 'F') return Vector3.forward;
+        else if (move[0] == 'B') return Vector3.back;
+        else return Vector3.zero;
+    }
+    
+
+    public string getReverse(string move) 
     {
         char last = move[move.Length - 1];
 

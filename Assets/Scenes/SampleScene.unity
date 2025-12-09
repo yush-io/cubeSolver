@@ -2282,6 +2282,56 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1178346377}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1204500020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1204500022}
+  - component: {fileID: 1204500023}
+  m_Layer: 0
+  m_Name: cubeRotator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1204500022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204500020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 353.3333, y: -100, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1204500023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204500020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e764d4615b7fc1408522f852479edd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RubikCube.CubeRotator
+  upPivot: {fileID: 1989017959}
+  downPivot: {fileID: 936529735}
+  leftPivot: {fileID: 1253764459}
+  rightPivot: {fileID: 1274211188}
+  frontPivot: {fileID: 1828039952}
+  backPivot: {fileID: 1101497942}
 --- !u!1001 &1233909244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3875,3 +3925,4 @@ SceneRoots:
   - {fileID: 1021024190}
   - {fileID: 1740426914}
   - {fileID: 915332915}
+  - {fileID: 1204500022}
