@@ -162,8 +162,9 @@ Adjustment to Client-Server Relationship
     * Open the project in Untiy Hub (verision 6000.0.24f1)
     * opeen the scene: Assets/Scenes/startMenu.unity
     * Press the Play button at the top
-   
-    
+  * pre-recorded demo:
+    * https://drive.google.com/file/d/11Z_G5KCX4AmxtMvTXT1RZV9cSnErHmcd/view?usp=sharing
+ 
  ## Testing
  ### Backend testing
 Unit testing: We created specific Python scripts to validate the accuracy of inidividual modules before integrating them into the main API.
