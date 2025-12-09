@@ -100,7 +100,7 @@ Description: The class diagram above represents the overall architecture of the 
  
 ### Updated Class Diagram with SOLID principles
 
-<img width="963" height="1101" alt="image" src="https://github.com/user-attachments/assets/5f9ee896-becb-4b53-b356-0d3ee6804056" />
+<img width="1121" height="1206" alt="image" src="https://github.com/user-attachments/assets/41a5481f-1ca6-4edd-905c-120ca9e71d6b" />
 
 
 ### Explaning Class Diagram Changes
