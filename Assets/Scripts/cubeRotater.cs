@@ -13,13 +13,9 @@ using System.IO;
 //using System.Numerics; // causing namespace problems
 
 
-<<<<<<< HEAD
-public class cubeRotater : MonoBehaviour
-=======
 
 
 public class cubeRotator : MonoBehaviour
->>>>>>> 466e01ec46871a384356620233e884379b3045e6
 {
     // may need to add second string member for scramble
     private class Moves
