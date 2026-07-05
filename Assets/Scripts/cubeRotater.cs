@@ -79,7 +79,7 @@ public class cubeRotator : MonoBehaviour
     {
         for (int i = 0; i < moveList.Length; ++i)
         {
-            // Debug.Log("Executing rotation: " + moves[i] + '\n');
+            Debug.Log("Auto-scramble move: " + moveList[i]);
             yield return rotateFace(moveList[i]);
             yield return new WaitForSeconds(0.05f);
         }
@@ -180,11 +180,12 @@ public class cubeRotator : MonoBehaviour
         float totalDegreesRotated = 0f;
         while (timeElapsed < animationDuration)
         {
-            float increment = (angle / animationDuration) * Time.deltaTime;
+            float stepTime = Mathf.Min(Time.deltaTime, animationDuration - timeElapsed);
+            float increment = (angle / animationDuration) * stepTime;
 
             pivot.Rotate(axis, increment, Space.Self);
 
-            timeElapsed += Time.deltaTime;
+            timeElapsed += stepTime;
             totalDegreesRotated += increment;
             yield return null; // ensure pausing coroutine at end of frame
         }
@@ -197,7 +198,7 @@ public class cubeRotator : MonoBehaviour
         {
             faceCubelets[i].SetParent(transform);
         }
-
+        pivot.localRotation = Quaternion.identity;
     }
 
     /*public Vector3 getAxis(string move)

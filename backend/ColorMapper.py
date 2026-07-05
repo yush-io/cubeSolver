@@ -17,7 +17,7 @@ LAB_COLORS = {
 
 class IColorMapper(ABC):
     @abstractmethod 
-    def nearest_color_calculator(self, lab_color: np.ndarray) -> str:
+    def nearest_color_calculator(self, lab_color: np.ndarray, reference_colors=None) -> str:
         pass
 
     @abstractmethod
@@ -70,7 +70,10 @@ class ColorMapper(IColorMapper):
         return avg_lab # [L, A, B]
 
     # find the neaerest reference color
-    def nearest_color_calculator(self, lab_color: np.ndarray) -> str:
+    def nearest_color_calculator(self, lab_color: np.ndarray, reference_colors=None) -> str:
+        if reference_colors is None:
+            reference_colors = LAB_COLORS
+       
         min_distance = float('inf')
         nearest = None
 
@@ -79,7 +82,7 @@ class ColorMapper(IColorMapper):
         # We de-emphasize L (0.5) so glare doesn't turn colors like yellow into white.
         weight = np.array([0.5, 2.0, 2.0])
 
-        for color_name, ref_lab_color in LAB_COLORS.items():
+        for color_name, ref_lab_color in reference_colors.items():
             diff = (lab_color - ref_lab_color) * weight # Using Euclidenan Distance to to find the closest match
             difference_distance = np.linalg.norm(diff)
 
@@ -89,6 +92,19 @@ class ColorMapper(IColorMapper):
 
         return nearest
 
+    def build_calibrated_refs(self, centers, scan_order):
+        if len(centers) != 6 or len(scan_order) != 6:
+            raise ValueError("Need exactly 6 centers and 6 scan labels.")
+        
+        calibrated_refs = {}
+        
+        for i in range(6):
+            color_label = scan_order[i]
+            center_lab = centers[i]
+            calibrated_refs[color_label] = center_lab
+            
+        return calibrated_refs
+    
     # Matches the 6 detected centers against the known reference colors
     # Uses a global best fit algorithm to handle random scan orders
     def identify_centers(self, centers: List[np.ndarray]) -> List[str]:
