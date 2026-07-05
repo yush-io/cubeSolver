@@ -12,10 +12,36 @@ public class PhotoManager : MonoBehaviour
     public APIClient apiClient;
     public List<RawImage> photoSlots;  // Should have exactly 6 slots
     public TextMeshProUGUI statusText;
+    private readonly string[] scanPrompts =
+    {
+        "Capture the face with the WHITE center",
+        "Capture the face with the RED center",
+        "Capture the face with the GREEN center",
+        "Capture the face with the YELLOW center",
+        "Capture the face with the ORANGE center",
+        "Capture the face with the BLUE center"
+    };
 
     private List<Texture2D> capturedPhotos = new List<Texture2D>();
     private const int maxPhotos = 6;
 
+    private void Start()
+    {
+        UpdateScanPrompt();
+    }
+    private void UpdateScanPrompt()
+    {
+        if (statusText == null) return;
+
+        if (capturedPhotos.Count < maxPhotos)
+        {
+            statusText.text = scanPrompts[capturedPhotos.Count];
+        }
+        else
+        {
+            statusText.text = "All 6 faces captured. Submit photos.";
+        }
+    }
     public void TakePicture()
     {
         Debug.Log("TakePicture called");
@@ -33,7 +59,7 @@ public class PhotoManager : MonoBehaviour
             if (statusText != null) statusText.text = "All 6 photos already taken.";
             return;
         }
-         // changed and added 
+        // changed and added 
         Texture2D photo;
         if (cameraController.useWebcam)
         {
@@ -51,14 +77,6 @@ public class PhotoManager : MonoBehaviour
         }
 
         Debug.Log("Photo captured: " + photo.width + "x" + photo.height);
-         //
-
-        if (photo == null)
-        {
-            Debug.LogError("Failed to capture photo!");
-            if (statusText != null) statusText.text = "Failed to capture photo!";
-            return;
-        }
 
         capturedPhotos.Add(photo);
 
@@ -69,8 +87,7 @@ public class PhotoManager : MonoBehaviour
 
         Debug.Log($"Photo {capturedPhotos.Count} captured");
 
-        if (statusText != null)
-            statusText.text = $"Photo {capturedPhotos.Count} taken!";
+        UpdateScanPrompt();
     }
 
     public void SubmitPhotos()
@@ -87,7 +104,7 @@ public class PhotoManager : MonoBehaviour
         if (capturedPhotos.Count < maxPhotos)
         {
             Debug.Log("You must take all 6 photos before submitting.");
-            if (statusText != null) statusText.text = $"Take all {maxPhotos} photos first!";
+            UpdateScanPrompt();
             return;
         }
 

@@ -123,14 +123,15 @@ async def upload_photos(files: list[UploadFile] = File(...)):
          # center sticker used for face mapping
         centers_lab.append(sticker_labs[4]) # Index 4 is center
 
-    # determine which face is which using the 6 center tiles
+    # frontend sends faces in this guided order:
+    # white center, red center, green center, yellow center, orange center, blue center
     try:
-        # This returns a list like ['R', 'W', 'B', 'G', 'Y', 'O'] based on best fit
-        scan_order = color_mapper.identify_centers(centers_lab)
-        print(f"Identified Scan Order: {scan_order}")
+        scan_order = ["W", "R", "G", "Y", "O", "B"] 
+        calibrated_refs = color_mapper.build_calibrated_refs(centers_lab, scan_order)
+        print(f"Using Guided Scan Order: {scan_order}")
     except Exception as e:
-        print(f"Center ID failed: {e}")
-        raise HTTPException(status_code=500, detail="Could not identify cube face colors.")
+        print(f"Calibration failed: {e}")
+        raise HTTPException(status_code=500, detail="Could not calibrate cube face colors.")
 
     # label every sticker using nearest color match
     face_strings: list[str] = []
@@ -144,7 +145,7 @@ async def upload_photos(files: list[UploadFile] = File(...)):
             if i == 4:
                 label = expected_center
             else:
-                label = color_mapper.nearest_color_calculator(lab)
+                label = color_mapper.nearest_color_calculator(lab, calibrated_refs)
             side_str += label
         face_strings.append(side_str)
 
@@ -204,3 +205,4 @@ async def upload_photos(files: list[UploadFile] = File(...)):
     return JSONResponse({
         "Solution": solution.split()
     })
+    
