@@ -38,3 +38,13 @@ ExportedObj/
 
 # Package cache
 Packages/com.unity.package-manager.cache/
+
+# Python / backend generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+cubeenv/
+backend/debug_uploads/
+debug_uploads/

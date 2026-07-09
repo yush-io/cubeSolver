@@ -12,6 +12,7 @@ public class APIClient : MonoBehaviour
     public class SolutionResponse
     {
         public string[] Solution;
+        public string[] solution;
     }
 
     // Coroutine that sends photos and calls onSolutionReceived with the parsed array
@@ -28,14 +29,21 @@ public class APIClient : MonoBehaviour
    
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError("Upload failed: " + www.error);
+                Debug.LogError($"Upload failed ({www.responseCode}): {www.error}\n{www.downloadHandler.text}");
                 onSolutionReceived?.Invoke(null);
                 yield break;
             }
 
             string text = www.downloadHandler.text;
+            Debug.Log("Backend response: " + text);
             SolutionResponse response = JsonUtility.FromJson<SolutionResponse>(text);
-            onSolutionReceived?.Invoke(response.Solution);
+            string[] solution = response.Solution ?? response.solution;
+            if (solution == null || solution.Length == 0)
+            {
+                Debug.LogError("Backend response did not include a solution: " + text);
+            }
+
+            onSolutionReceived?.Invoke(solution);
         }
     }
 }
