@@ -26,6 +26,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 # folder to save uploaded images for debugging
 UPLOAD_DEBUG_DIR = "debug_uploads"
 os.makedirs(UPLOAD_DEBUG_DIR, exist_ok=True)
@@ -61,6 +65,16 @@ async def upload_photos(files: list[UploadFile] = File(...)):
     reorders to URFDLB, validates, and solves.
     """
     print(f"Received {len(files)} files")
+    debug_info = {
+        "received_files": len(files),
+        "scan_order": ["W", "R", "G", "Y", "O", "B"],
+        "detection": [],
+        "face_strings": [],
+        "raw_cube_string": "",
+        "final_cube_string": "",
+        "faces_3x3": [],
+        "validation": {"valid": False, "message": ""},
+    }
     # must have exactly 6 faces
     if len(files) != 6:
         raise HTTPException(status_code=400, detail="You must upload exactly 6 images.")
@@ -71,6 +85,13 @@ async def upload_photos(files: list[UploadFile] = File(...)):
 
     # loop through all uploaded images
     for i, file in enumerate(files):
+        face_debug = {
+            "face_index": i,
+            "filename": file.filename,
+            "attempts": [],
+            "detected": 0,
+            "success": False,
+        }
         # save image for debugging 
         contents = await file.read()
         debug_path = os.path.join(UPLOAD_DEBUG_DIR, f"face_{i}_photo.png")
@@ -90,6 +111,10 @@ async def upload_photos(files: list[UploadFile] = File(...)):
             current_stickers = detector.detectAndCrop(processed_img)
             
             print(f"Image {i} (Attempt {attempt}): Found {len(current_stickers)} stickers")
+            face_debug["attempts"].append({
+                "attempt": attempt,
+                "stickers_found": len(current_stickers),
+            })
             
             # If we find > 9, take top 9 (assuming detector returns unsorted confidence, or just take first 9)
             if len(current_stickers) > 9:
@@ -98,6 +123,8 @@ async def upload_photos(files: list[UploadFile] = File(...)):
             # success case
             if len(current_stickers) == 9:
                 stickers = current_stickers
+                face_debug["detected"] = len(stickers)
+                face_debug["success"] = True
                 # save filtered image that worked
                 cv2.imwrite(f"{UPLOAD_DEBUG_DIR}/success_face_{i}.jpg", processed_img)
                 break 
@@ -109,12 +136,17 @@ async def upload_photos(files: list[UploadFile] = File(...)):
         # check if detection worked
         if len(stickers) != 9:
             print(f"Error: Expected 9 stickers, found {len(stickers)} on image {i}")
+            face_debug["detected"] = len(stickers)
+            debug_info["detection"].append(face_debug)
             return JSONResponse({
                 "status": "error",
                 "reason": "detected fewer than 9 stickers",
                 "detected": len(stickers),
                 "face_index": i,
+                "debug": debug_info,
             }, status_code=500)
+
+        debug_info["detection"].append(face_debug)
 
         # convert each sticker roi to lab color
         sticker_labs = [color_mapper.roi_to_lab(roi) for roi in stickers]
@@ -148,9 +180,16 @@ async def upload_photos(files: list[UploadFile] = File(...)):
                 label = color_mapper.nearest_color_calculator(lab, calibrated_refs)
             side_str += label
         face_strings.append(side_str)
+        debug_info["face_strings"].append({
+            "face_index": face_idx,
+            "expected_center": expected_center,
+            "stickers": side_str,
+            "rows": [side_str[r:r+3] for r in range(0, 9, 3)],
+        })
 
     # combine all faces into one string
     raw_cube_string = "".join(face_strings)
+    debug_info["raw_cube_string"] = raw_cube_string
     print("Raw String:", raw_cube_string)
 
     # reorder faces to match kociemba solver format
@@ -172,6 +211,7 @@ async def upload_photos(files: list[UploadFile] = File(...)):
         final_ordered_faces.append(scanned_faces_dict[target])
         
     final_cube_string = "".join(final_ordered_faces)
+    debug_info["final_cube_string"] = final_cube_string
     print("Final Kociemba String:", final_cube_string)
 
     # print the cube in a readable 3x3 format (debug only)
@@ -180,8 +220,13 @@ async def upload_photos(files: list[UploadFile] = File(...)):
         names = ["U(W)", "R(R)", "F(G)", "D(Y)", "L(O)", "B(B)"]
         faces = [cube_str[i:i+9] for i in range(0, 54, 9)]
         for idx, face in enumerate(faces):
+            rows = [face[r:r+3] for r in range(0, 9, 3)]
+            debug_info["faces_3x3"].append({
+                "name": names[idx],
+                "rows": rows,
+            })
             print(f"Face {names[idx]}:")
-            for r in range(0, 9, 3): print(" ".join(face[r:r+3]))
+            for row in rows: print(" ".join(row))
             print()
     print_cube_3x3(final_cube_string)
 
@@ -191,7 +236,14 @@ async def upload_photos(files: list[UploadFile] = File(...)):
 
     if not isValid:
         print(f"Validation Failed: {result}")
-        raise HTTPException(status_code=400, detail=result)
+        debug_info["validation"] = {"valid": False, "message": result}
+        return JSONResponse({
+            "status": "error",
+            "detail": result,
+            "debug": debug_info,
+        }, status_code=400)
+
+    debug_info["validation"] = {"valid": True, "message": result}
 
     # get solution from kociemba
     try:
@@ -203,6 +255,6 @@ async def upload_photos(files: list[UploadFile] = File(...)):
 
     # return solution as list for unity
     return JSONResponse({
-        "Solution": solution.split()
+        "Solution": solution.split(),
+        "debug": debug_info,
     })
-    

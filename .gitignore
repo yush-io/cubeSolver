@@ -48,3 +48,15 @@ venv/
 cubeenv/
 backend/debug_uploads/
 debug_uploads/
+backend_launcher.log
+
+# macOS
+.DS_Store
+
+# Web frontend
+web-demo/node_modules/
+web-demo/dist/
+web-demo/.env.local
+web-demo/*.tsbuildinfo
+web-demo/vite.config.js
+web-demo/vite.config.d.ts
