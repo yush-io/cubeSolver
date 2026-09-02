@@ -48,9 +48,12 @@ def test_upload_photos_happy_path(monkeypatch):
             # return dummy lab
             return np.array([50.0, 0.0, 0.0])
 
-        def nearest_color_calculator(self, lab):
+        def nearest_color_calculator(self, lab, reference_colors=None):
             # always say 'W' for simplicity
             return "W"
+
+        def build_calibrated_refs(self, centers, scan_order):
+            return dict(zip(scan_order, centers))
 
         def identify_centers(self, centers):
             # pretend faces are scanned as: W, R, G, Y, O, B

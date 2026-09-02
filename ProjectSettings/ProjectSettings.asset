@@ -597,7 +597,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
+  cameraUsageDescription: This app uses the camera to scan cube faces for solving.
   locationUsageDescription: 
   microphoneUsageDescription: 
   bluetoothUsageDescription: 

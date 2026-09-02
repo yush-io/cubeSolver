@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 // by abdullah
 using UnityEngine.UI;
@@ -8,8 +9,13 @@ public class CameraController : MonoBehaviour
     //added by abdullah
     public bool useWebcam = false; // toggle between scene capture and webcam
     public UnityEngine.UI.RawImage previewImage;
+    [Range(0.1f, 1f)] public float previewMaxScreenWidth = 0.92f;
+    [Range(0.1f, 1f)] public float previewMaxScreenHeight = 0.62f;
 
     private WebCamTexture webcamTexture;
+    private RectTransform previewRect;
+    private int lastScreenWidth;
+    private int lastScreenHeight;
     //
 
     private void Awake()
@@ -31,6 +37,11 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        if (previewImage != null)
+        {
+            previewRect = previewImage.rectTransform;
+        }
+
         if (useWebcam)
         {
             // Log all available webcams
@@ -45,6 +56,17 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (!useWebcam || previewRect == null || webcamTexture == null)
+            return;
+
+        if (Screen.width != lastScreenWidth || Screen.height != lastScreenHeight)
+        {
+            ResizePreviewToWindow();
+        }
+    }
+
     public void StartWebcam()
     {
         if (WebCamTexture.devices.Length > 0)
@@ -56,6 +78,7 @@ public class CameraController : MonoBehaviour
             {
                 previewImage.texture = webcamTexture;
                 previewImage.material.mainTexture = webcamTexture;
+                StartCoroutine(ResizePreviewWhenReady());
 
             }
         }
@@ -63,6 +86,44 @@ public class CameraController : MonoBehaviour
         {
             Debug.LogError("CameraController: No webcame found!");
         }
+    }
+
+    private IEnumerator ResizePreviewWhenReady()
+    {
+        while (webcamTexture != null && webcamTexture.width <= 16)
+        {
+            yield return null;
+        }
+
+        ResizePreviewToWindow();
+    }
+
+    private void ResizePreviewToWindow()
+    {
+        if (previewRect == null || webcamTexture == null)
+            return;
+
+        float textureWidth = Mathf.Max(webcamTexture.width, 1);
+        float textureHeight = Mathf.Max(webcamTexture.height, 1);
+        float aspect = textureWidth / textureHeight;
+
+        float maxWidth = Screen.width * previewMaxScreenWidth;
+        float maxHeight = Screen.height * previewMaxScreenHeight;
+
+        float width = maxWidth;
+        float height = width / aspect;
+
+        if (height > maxHeight)
+        {
+            height = maxHeight;
+            width = height * aspect;
+        }
+
+        previewRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        previewRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+
+        lastScreenWidth = Screen.width;
+        lastScreenHeight = Screen.height;
     }
 
     public Texture2D CapturePhoto()
